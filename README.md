@@ -77,3 +77,22 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+
+## Eklenen Paketler ve özel kurulumları
+
+### npm install @react-native-async-storage/async-storage
+https://react-native-async-storage.github.io/async-storage/docs/install/
+Link
+Android & iOS
+Requires React Native 0.60+
+
+CLI autolink feature links the module while building the app.
+
+On iOS, use CocoaPods to add the native RNAsyncStorage to your project:
+
+npx pod-install
+
+
+

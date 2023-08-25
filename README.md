@@ -95,4 +95,8 @@ On iOS, use CocoaPods to add the native RNAsyncStorage to your project:
 npx pod-install
 
 
+## https://github.com/oblador/react-native-vector-icons
+
+
+
 

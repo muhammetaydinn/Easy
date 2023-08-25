@@ -1,0 +1,329 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/helveticaneue/Helvetica Neu Bold.ttf",
+      "sha1": "4df1c65ace6cb5dfa38ef3f2b59e89ab6d08ada8"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeue BlackCond.ttf",
+      "sha1": "c36dcde33cd0b0f2e2452e09b8b388a2b859088f"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeue Light.ttf",
+      "sha1": "14236487c484725caf35ed434068fca8ab7e750f"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeue Medium.ttf",
+      "sha1": "5b235bd8ab01aa99e3a2a66daea10350a9d254ed"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeue Thin.ttf",
+      "sha1": "3b7687a56fb5075685e517efbd68881dc54922bb"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/helveticaneue.png",
+      "sha1": "e07a2790b69cfade53ddc0459458fdf5fdd70c0a"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeue.ttf",
+      "sha1": "d82ba04b7438da9836d701bbf704600d77b466c0"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeueBd.ttf",
+      "sha1": "adebb8ccc9485184247433bcc74ee62186d9f34e"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeueHv.ttf",
+      "sha1": "0c828a7876acbabf4471a32182dfb13e1b357977"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeueIt.ttf",
+      "sha1": "23e3aa33dac5cc1721c5a651d5d106e80c03ef00"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeueLt.ttf",
+      "sha1": "ac8d8510e43277a5bebd1f7bc0cf05c36bc6334c"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/HelveticaNeueMed.ttf",
+      "sha1": "012639f9a4ed9f209ee31d2adc81734e941f64f3"
+    },
+    {
+      "path": "assets/fonts/helveticaneue/www.freefontsdownload.net.url",
+      "sha1": "e3a587e6b8b3b37199aabd5bf225736bae5c91ad"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/OFL.txt",
+      "sha1": "43513d1f6a1329962106efc212457e1d6ef9e980"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/README.txt",
+      "sha1": "7947d67ad0a7767a91104ee69bed09c30cc17f22"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf",
+      "sha1": "8af7e691cae7f71f112bd0aeab45811c3e59e1bc"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf",
+      "sha1": "5bafbeb08b0437b9b87bbaee2b8559acc77db533"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-Black.ttf",
+      "sha1": "217e62896ee7dc30a690a06806ea0c92e00ba005"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-BlackItalic.ttf",
+      "sha1": "868d7d5baa7f35bde79bc3d9ee35c94eb7d4df60"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-Bold.ttf",
+      "sha1": "560c8a4c4cbd35f0e3fa72b36d0e2177e57997ae"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-BoldItalic.ttf",
+      "sha1": "a691d68e3f9b58b56e004555e91dbd2c4100e9c6"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-ExtraBold.ttf",
+      "sha1": "2ed420c1b489c113704f29ba24d48a3aa46c4864"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-ExtraBoldItalic.ttf",
+      "sha1": "58c58e72d90127de6d2d3feaf337bb8e20471bf9"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-ExtraLight.ttf",
+      "sha1": "486e83bae44c1e2877b4294079bd004fa4b4cebc"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-ExtraLightItalic.ttf",
+      "sha1": "4e3d63ab5803c484fd993f92955cf3e96381bb56"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-Italic.ttf",
+      "sha1": "52afad2cc3e5bcf8b2557038507f53bcec7b0d97"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-Light.ttf",
+      "sha1": "e842d740bd84186299fba7bf825903945b9708fe"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-LightItalic.ttf",
+      "sha1": "7ab95f436f1c20e676610e0e2f1bb5c9ac84903d"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-Medium.ttf",
+      "sha1": "b37385b41ca241c013e23c5b347fd59f50723a45"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-MediumItalic.ttf",
+      "sha1": "c767c935baeb7785622a7af5769f32d034a16770"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-Regular.ttf",
+      "sha1": "cd607e20a37e981e9b0d398d58d349dc5df5d27f"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-SemiBold.ttf",
+      "sha1": "c0ac5638a999f3606f409711693240f1536eb0a1"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4-SemiBoldItalic.ttf",
+      "sha1": "62550212a4f8a7a0f3100c033c678c7abdc2a10a"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-Black.ttf",
+      "sha1": "ea68c61b74a9e6120b5235cc89e80d5663c6a675"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-BlackItalic.ttf",
+      "sha1": "6622a9118ff9a91b6c1d35b7d066088f46c61991"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-Bold.ttf",
+      "sha1": "cc89a45512cb25795346556256dafa661921164a"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-BoldItalic.ttf",
+      "sha1": "afd0703820c3711cce3de588b86e079c09f726be"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-ExtraBold.ttf",
+      "sha1": "16c3c3e2fc881010f79fa274506f1358fe7e31a8"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-ExtraBoldItalic.ttf",
+      "sha1": "bb936f45f35340e2e564a8c6a773fc5fcbbb4205"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-ExtraLight.ttf",
+      "sha1": "ac187449ae97b08ab2c036c6cd3fe36cc94c9b86"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-ExtraLightItalic.ttf",
+      "sha1": "698f37efa3aee95ecf01138cd404dbfe37255cdd"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-Italic.ttf",
+      "sha1": "e2776c706b8b95825af6f66a2e1fb73322bd3745"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-Light.ttf",
+      "sha1": "3363a1fbe6ece0fb6e93d0a07ab9d130b661947c"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-LightItalic.ttf",
+      "sha1": "8f23e93cd6b91ca4fe54212230f75b61709af972"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-Medium.ttf",
+      "sha1": "185dd465dee27797f28c29e611b1d212aa8d9b16"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-MediumItalic.ttf",
+      "sha1": "da3a27b26218f99be27d084ac5170f63daab61a6"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-Regular.ttf",
+      "sha1": "1b36693ff53ddfde7537e710a6ae5e89bb88dbd1"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-SemiBold.ttf",
+      "sha1": "40a905e52e5e287fd658b16b934d55f7eeadf794"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_18pt-SemiBoldItalic.ttf",
+      "sha1": "ace697737a101074bbe7b46aae624a0d69dc6892"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-Black.ttf",
+      "sha1": "5679263085217ac0b333688454f546c620698d95"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-BlackItalic.ttf",
+      "sha1": "7f8e82e5ba53e181c65f89f60e16ffbae4380235"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-Bold.ttf",
+      "sha1": "a1a52b6560ac267f997fb9dbb833c8b6974f20af"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-BoldItalic.ttf",
+      "sha1": "3125cbeaebdff318c74dee2a40eb667939a4a4b7"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-ExtraBold.ttf",
+      "sha1": "60ad01ff591c0668756b370a77b4facd9ca5fca5"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-ExtraBoldItalic.ttf",
+      "sha1": "bc33ed14f1a6279957b6406287613f37ed127e98"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-ExtraLight.ttf",
+      "sha1": "cf8a62ed72549d780e5d6abc759f27e057325d8b"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-ExtraLightItalic.ttf",
+      "sha1": "88b81235710cf0285811ffff9ef584d9990c82b2"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-Italic.ttf",
+      "sha1": "481f1fa997548ddf55bd9a14288f21606513c64d"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-Light.ttf",
+      "sha1": "b87a54c33ac4797dbe6b096b81a44047bb83072f"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-LightItalic.ttf",
+      "sha1": "35130aada8bae70f918a2cb03f10e5a0da84452e"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-Medium.ttf",
+      "sha1": "0771c50b302802a2b577b9cd731d5ebed986c8bb"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-MediumItalic.ttf",
+      "sha1": "d54a258874f97a878bdd6d3ea1eb2aa47f4670ca"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-Regular.ttf",
+      "sha1": "fc6820d353c534cd96fe03017253d74a7b2e5d97"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-SemiBold.ttf",
+      "sha1": "862457e6e244faa66702330ba898495fbdac5d68"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_36pt-SemiBoldItalic.ttf",
+      "sha1": "ac69bcbc398311836f231827444fd2fb481a5cb0"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-Black.ttf",
+      "sha1": "a826b457fb06c31d69863ffa43ed5cf5dac26f61"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-BlackItalic.ttf",
+      "sha1": "f4533a8593bbec8f8cebde31197042723f30c225"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-Bold.ttf",
+      "sha1": "1621f38db732d3ac7213f85dc90e37e703d0b826"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-BoldItalic.ttf",
+      "sha1": "d0ea132d2bf0d289566245fa8b75d0f77f6a6338"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-ExtraBold.ttf",
+      "sha1": "01b57924ea48af968b00239f7a1d7a683d94b0dd"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-ExtraBoldItalic.ttf",
+      "sha1": "efba226906a39f613c479a045542bbd77283f1fb"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-ExtraLight.ttf",
+      "sha1": "1f364f88bc5de5ec9590a361e55e52262b9d2c9c"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-ExtraLightItalic.ttf",
+      "sha1": "c6d9bf896798641d7e9b5ac0caae6d9c348752cb"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-Italic.ttf",
+      "sha1": "9d01fee047375f233da9847efb5447c2aa8644d0"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-Light.ttf",
+      "sha1": "dff0a579ea94a7c130c1a8f0335a2d1b4f8d066c"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-LightItalic.ttf",
+      "sha1": "f918a30bec2d9eef524af20e4a4cf4d27ae3caf9"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-Medium.ttf",
+      "sha1": "3b5f089efbf50a3f859b06c415f54ff52070a43f"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-MediumItalic.ttf",
+      "sha1": "07f9439adf85716ccd331547d1f03b39954f5f8e"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-Regular.ttf",
+      "sha1": "0db7263c197e0ebb1c76636c07c0b4f0d2d73435"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-SemiBold.ttf",
+      "sha1": "0ed8fc1bb2ef87b037b69c4a8a4681c7cb0c190c"
+    },
+    {
+      "path": "assets/fonts/Source_Serif_4/static/SourceSerif4_48pt-SemiBoldItalic.ttf",
+      "sha1": "07cc8102ec5f1fb15efdee833f434214d37beec3"
+    }
+  ]
+}

@@ -23,12 +23,10 @@ const getNewFCMToken = async () => {
     //read from storage
     const tokenStorage = await AsyncStorage.getItem('fcmToken');
 
-    if (token != tokenStorage&& token != null&&token.length>0) {
+    if (token != tokenStorage && token != null && token.length > 0) {
       // Store the new token
-   
       // Proceed to send data
       await sendData(token);
-         await AsyncStorage.setItem('fcmToken', token);
     }
   } catch (error) {
     console.error('Error getting new FCM token:', error);

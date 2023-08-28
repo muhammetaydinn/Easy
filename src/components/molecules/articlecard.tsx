@@ -28,7 +28,7 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
           {/* sol tarafta başlık ve tarih altında da kısa metin  sağ tarafta kucuk resim  */}
           <View style={{flex: 3, paddingRight: 15}}>
             <Text fontFam="bold" style={styles.title}>
-              {'Lorem ipsum dolor sit amet, consectetur '}
+              {article.title}
             </Text>
             {/* <Text style={{marginTop: 10, color: 'grey'}}>
             

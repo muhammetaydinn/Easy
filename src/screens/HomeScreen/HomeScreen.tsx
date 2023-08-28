@@ -1,45 +1,35 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-  Image,
-  ScrollView,
-  Dimensions,
-  Animated,
-  StatusBar,
-  Button,
-} from 'react-native';
-import axios from 'axios';
-import {baseUrl} from '../../constants';
+import {View, StyleSheet, ScrollView, Button} from 'react-native';
 import {Text} from '../../components/atoms/Text/Text';
 import {height, width} from '../../utils/hw';
-import ArticleCard, {Article} from '../../components/molecules/articlecard';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import ArticleCard from '../../components/molecules/articlecard';
 import ScrollableTexts from '../../components/molecules/sticky';
+import {fetchNewsArticles} from '../../services/news/fetch_news'; // Dizin doğru şekilde güncellenmeli
+import { Article } from '../../models/article';
 
 const HomeScreen: React.FC = () => {
+  // const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
   const [newsArticles, setNewsArticles] = useState<Article[]>([]);
 
   useEffect(() => {
-    fetchNewsArticles();
+    const fetchData = async () => {
+      try {
+        const articles = await fetchNewsArticles();
+        setNewsArticles(articles);
+      } catch (error) {
+        console.error('Error fetching news articles:', error);
+      }
+    };
+    fetchData();
   }, []);
 
-  const fetchNewsArticles = async () => {
-    try {
-      const response = await axios.get(baseUrl + '/api/news');
-      console.log(response.data);
-      setNewsArticles(response.data);
-    } catch (error) {
-      console.error('Error fetching news articles:', error);
-    }
-  };
-
   return (
-    <SafeAreaView>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.white} />
+    <View style={{backgroundColor: 'white', flex: 1}}>
+      {/* <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      /> */}
       <ScrollView stickyHeaderIndices={[1]}>
         <View style={styles.headerContainer}>
           <Text fontFam="bold" style={styles.header}>
@@ -58,7 +48,7 @@ const HomeScreen: React.FC = () => {
           keyExtractor={item => item['newsUUID']}
         /> */}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -27,7 +27,7 @@ async function sendData(token: string) {
         console.log('Token not saved');
       }
     } catch (error) {
-      console.error(error);
+      console.error( 'Error sending data:', error);
     }
   }
 }

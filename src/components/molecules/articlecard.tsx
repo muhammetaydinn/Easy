@@ -4,19 +4,14 @@ import CImage from '../atoms/CircleImage/CircleImage';
 import {Text} from '../atoms/Text/Text';
 import TimeAgo from './timeago';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Article} from '../../models/article';
 
-export interface Article {
-  image: string | null;
-  newsCategories: string | null;
-  newsUUID: string;
-  text: string | null;
-  title: string | null;
-  authorId: string | null;
-  creationTime: string;
-}
 const ArticleCard: React.FC<{article: Article}> = ({article}) => {
   return (
-    <TouchableOpacity style={styles.articleCard}>
+    <TouchableOpacity
+      onPress={() => console.log('touchable opacity')}
+      activeOpacity={1}
+      style={styles.articleCard}>
       {/* 1 */}
       <View style={{padding: 20, height: height * 0.2}}>
         {/* pp ve isim */}
@@ -24,7 +19,7 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
           <CImage
             radius={20}
             size={20}
-            source={{uri: article.image as string}}
+            uri= {article.image as string}
           />
           <Text style={{marginLeft: 10}}>{article.authorId}</Text>
         </View>
@@ -45,7 +40,7 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
               radius={5}
               size={70}
               whratio={1.3}
-              source={{uri: article.image as string}}
+              uri= {article.image as string}
             />
           </View>
         </View>
@@ -54,7 +49,30 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
           <Text style={{paddingTop: 15, fontSize: 10, color: 'grey'}}>
             Selected for you
           </Text>
-          <View></View>
+          <View style={{flexDirection: 'row'}}>
+            <Icon
+              style={{padding: 10}}
+              name="bookmark-o"
+              size={20}
+              color="black"
+              onPress={() => {
+                console.log('Bookmark pressed');
+              }}
+            />
+            <Icon
+              style={{padding: 10}}
+              name="minus-circle"
+              size={20}
+              color="black"
+            />
+            <Icon
+              style={{padding: 10}}
+              name="ellipsis-v"
+              aria-label="More options"
+              size={20}
+              color="black"
+            />
+          </View>
         </View>
       </View>
 

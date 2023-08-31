@@ -20,7 +20,7 @@ const CImage: React.FC<CircleImageProps> = ({
         styles.circle,
         {width: size * whratio, height: size / whratio, borderRadius: radius},
       ]}>
-      {uri !== '' && uri!=null? <Image source={{uri: uri}} style={styles.image} /> : null}
+      {uri !== '' && uri!=null? <Image source={{uri: uri}} style={styles.image} /> : null }
     </View>
   );
 };
@@ -28,6 +28,7 @@ const CImage: React.FC<CircleImageProps> = ({
 const styles = StyleSheet.create({
   circle: {
     overflow: 'hidden',
+    backgroundColor: 'lightgrey',
   },
   image: {
     width: '100%',

@@ -1,32 +1,38 @@
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {height, width} from '../../utils/hw';
-import CImage from '../atoms/CircleImage/CircleImage';
-import {Text} from '../atoms/Text/Text';
+import CImage from '../atoms/CircleImage';
+import {Text} from '../atoms/Text';
 import TimeAgo from './timeago';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Article} from '../../models/article';
+import {Content} from '../../models/news';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigators/Main';
 
-const ArticleCard: React.FC<{article: Article}> = ({article}) => {
+const ArticleCard: React.FC<{article: Content}> = ({article}) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   return (
     <TouchableOpacity
-      onPress={() => console.log('touchable opacity')}
+      onPress={() => {
+        console.log('touchable opacity');
+        //TODO: HATALI GOZUKUYOR OLABILIR TYPE DAN DOLAYI
+        navigation.navigate('NewDetailScreen', {content: article});
+      }}
       activeOpacity={1}
       style={styles.articleCard}>
       {/* 1 */}
-      <View style={{padding: 20, height: height * 0.2}}>
+      <View style={{padding: 20}}>
         {/* pp ve isim */}
         <View style={{flexDirection: 'row'}}>
-          <CImage
-            radius={20}
-            size={20}
-            uri= {article.image as string}
-          />
-          <Text style={{marginLeft: 10}}>{article.authorId}</Text>
+          <CImage radius={20} size={20} uri={article.author?.image as string} />
+          <Text style={{marginLeft: 10}}>{article.author?.name}</Text>
         </View>
         {/* 2 */}
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
           {/* sol tarafta başlık ve tarih altında da kısa metin  sağ tarafta kucuk resim  */}
-          <View style={{flex: 3, paddingRight: 15}}>
+          <View
+            style={{flex: 3, paddingRight: 15, justifyContent: 'space-around'}}>
             <Text fontFam="bold" style={styles.title}>
               {article.title}
             </Text>
@@ -40,10 +46,11 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
               radius={5}
               size={70}
               whratio={1.3}
-              uri= {article.image as string}
+              uri={article.image as string}
             />
           </View>
         </View>
+        <View style={{height: 10}}></View>
         {/* 3 */}
         <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
           <Text style={{paddingTop: 15, fontSize: 10, color: 'grey'}}>
@@ -51,7 +58,7 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
           </Text>
           <View style={{flexDirection: 'row'}}>
             <Icon
-              style={{padding: 10}}
+              style={{paddingTop: 10, paddingRight: 25}}
               name="bookmark-o"
               size={20}
               color="black"
@@ -60,13 +67,13 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
               }}
             />
             <Icon
-              style={{padding: 10}}
+              style={{paddingTop: 10, paddingRight: 25}}
               name="minus-circle"
               size={20}
               color="black"
             />
             <Icon
-              style={{padding: 10}}
+              style={{paddingTop: 10}}
               name="ellipsis-v"
               aria-label="More options"
               size={20}
@@ -75,8 +82,6 @@ const ArticleCard: React.FC<{article: Article}> = ({article}) => {
           </View>
         </View>
       </View>
-
-      <View style={{height: 2, width: width, backgroundColor: 'lightgrey'}} />
     </TouchableOpacity>
   );
 };

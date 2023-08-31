@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import moment from 'moment';
-import {Text} from '../../components/atoms/Text/Text';
+import {Text} from '../atoms/Text';
 
 interface TimeAgoProps {
   timestamp: string; // Gelen zaman damgası stringi
@@ -13,7 +13,7 @@ const TimeAgo: React.FC<TimeAgoProps> = ({timestamp}) => {
 
   return (
     <View>
-      <Text style={{fontSize:12, color:'gray'}}>{timeAgo}</Text>
+      <Text style={{fontSize: 12, color: 'gray'}}>{timeAgo}</Text>
     </View>
   );
 };

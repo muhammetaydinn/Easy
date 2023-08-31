@@ -25,5 +25,8 @@ pod install
 cd ..
 
 
+## https://reactnavigation.org/docs/stack-navigator/
+
+
 
 

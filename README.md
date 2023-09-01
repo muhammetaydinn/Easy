@@ -17,16 +17,10 @@ npx pod-install
 
 
 ## https://github.com/oblador/react-native-vector-icons
-
 ## https://reactnative.dev/docs/navigation
-For iOS with bare React Native project, make sure you have CocoaPods installed. Then install the pods to complete the installation:
-
-cd ios
-pod install
-cd ..
-
-
 ## https://reactnavigation.org/docs/stack-navigator/
+## https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/
+## apicon sadece android kurulumu yaptım
 
 
 

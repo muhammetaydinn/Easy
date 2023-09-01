@@ -13,12 +13,10 @@ const RootStack = createNativeStackNavigator<RootStackParams>();
 
 function HomeStack() {
   return (
-    <RootStack.Navigator initialRouteName="HomeScreen">
-      <RootStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{headerShown: false}}
-      />
+    <RootStack.Navigator
+      initialRouteName="HomeScreen"
+      screenOptions={{headerShown: false}}>
+      <RootStack.Screen name="HomeScreen" component={HomeScreen} />
       <RootStack.Screen name="NewDetailScreen" component={NewDetailScreen} />
     </RootStack.Navigator>
   );

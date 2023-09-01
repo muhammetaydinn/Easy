@@ -14,12 +14,15 @@ import ScrollableTexts from '../components/molecules/sticky';
 import {fetchNewsArticles} from '../services/news/fetch_news'; // Dizin doğru şekilde güncellenmeli
 import {Content, Root} from '../models/news';
 import {ArticleSeparator} from '../components/atoms/ArticleSeperator';
+import {defaultNewResponse} from '../constants/defaultNewResponse';
+import { FAB } from 'react-native-paper';
 
 const HomeScreen: React.FC = () => {
   // const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const [newsArticles, setNewsArticles] = useState<Root>();
   const [loading, setLoading] = useState<boolean>(false);
+  //TODO: INTERNET OLMADIGI DURUMDA DEFAULT  (defaultNewResponse as Root).content,
   const [dataSource, setDataSource] = useState<Content[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isListEnd, setIsListEnd] = useState<boolean>(false);
@@ -36,7 +39,7 @@ const HomeScreen: React.FC = () => {
       console.log('fetching data');
       try {
         const articles = await fetchNewsArticles(page, 1);
-        if (articles.content.length > 0) {
+        if (articles.content && articles.content.length > 0) {
           setPage(page + 1);
           setDataSource([...dataSource, ...articles.content]);
           setLoading(false);
@@ -81,6 +84,12 @@ const HomeScreen: React.FC = () => {
         onEndReached={fetchData}
         onEndReachedThreshold={0.5}
       />
+      <FAB
+        icon="plus"
+        color='white'
+        style={styles.fab}
+        onPress={() => console.log('Pressed')}
+      />
     </View>
   );
 };
@@ -110,6 +119,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "green",
+    borderRadius: 50,
+    
   },
 });
 

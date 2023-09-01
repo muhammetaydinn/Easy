@@ -1,14 +1,23 @@
 import {Text as RNText} from 'react-native';
 
-export const Text = ({fontFam = 'regular', ...props}) => {
-  const typo: {[key: string]: any} = {
+type CustomTextProps = {
+  fontFam?:'light' | 'regular' | 'bold';
+  style?: any;
+  children?: any;
+  props?: any;
+};
+
+export const Text : React.FC<CustomTextProps>= ({children,fontFam,style,props}) => {
+  const typo: {[key: string]: string} = {
     light: 'HelveticaNeue Light',
     regular: 'HelveticaNeue Medium',
     bold: 'Helvetica Neu Bold',
   };
   return (
-    <RNText {...props} style={[{fontFamily: typo[fontFam],color:"black", ...props.style}]}>
-      {props.children??""}
+    <RNText
+    {...props}
+      style={[{fontFamily: typo[fontFam??"regular"], color: 'black', ...style}]}>
+      {children ?? ''}
     </RNText>
   );
 };

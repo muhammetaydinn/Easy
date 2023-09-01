@@ -8,6 +8,7 @@ import {Content} from '../../models/news';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigators/Main';
+import { timeRead } from '../../utils/timeread';
 
 const ArticleCard: React.FC<{article: Content}> = ({article}) => {
   const navigation =
@@ -39,7 +40,12 @@ const ArticleCard: React.FC<{article: Content}> = ({article}) => {
             {/* <Text style={{marginTop: 10, color: 'grey'}}>
             
               {article.creationTime}</Text> */}
-            <TimeAgo timestamp={article.creationTime as string} />
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{color: 'gray', fontSize: 13}}>
+                {timeRead(article.text).concat(' • ')}
+              </Text>
+              <TimeAgo fontSize={13} timestamp={article.creationTime} />
+            </View>
           </View>
           <View style={{flex: 1}}>
             <CImage

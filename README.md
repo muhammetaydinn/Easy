@@ -1,4 +1,5 @@
 - Navigation bar arkaplan rengini beyaz yap
+- Eğer custom text ile sorun yaşanısa oraya eklenen react native pakedidin sadece spesifik olanını değil genel rn ekle
 
 ## Eklenen Paketler ve özel kurulumları
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {baseUrl} from '../../constants';
+import {baseUrl} from '../../constants/constants';
 import {Platform} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -27,7 +27,7 @@ async function sendData(token: string) {
         console.log('Token not saved');
       }
     } catch (error) {
-      console.error( 'Error sending data:', error);
+      console.error('Error sending data:', error);
     }
   }
 }

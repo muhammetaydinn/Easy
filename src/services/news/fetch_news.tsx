@@ -1,17 +1,22 @@
 import axios from 'axios';
-import {baseUrl} from '../../constants/constants';
+import {baseUrl, header} from '../../constants/constants';
 
 export const fetchNewsArticles = async (
   pageNumber: number,
   pageSize: number,
 ) => {
+ 
   try {
     const response = await axios.get(
       baseUrl +
         '/api/news?pageNumber=' +
         pageNumber.toString() +
         '&pageSize=' +
-        pageSize.toString(),
+        pageSize.toString() +
+        '&sortBy=creationTime',
+      {
+        headers: header,
+      },
     );
     return response.data;
   } catch (error) {

@@ -22,8 +22,10 @@ const HomeScreen: React.FC = () => {
 
   const [newsArticles, setNewsArticles] = useState<Root>();
   const [loading, setLoading] = useState<boolean>(false);
-  //TODO: INTERNET OLMADIGI DURUMDA DEFAULT  (defaultNewResponse as Root).content,
-  const [dataSource, setDataSource] = useState<Content[]>([]);
+  //TODO: INTERNET OLMADIGI DURUMDA DEFAULT  (defaultNewResponse as Root).content ya da []
+  const [dataSource, setDataSource] = useState<Content[]>(
+    (defaultNewResponse as Root).content,
+  );
   const [page, setPage] = useState<number>(1);
   const [isListEnd, setIsListEnd] = useState<boolean>(false);
   const renderFooter = () => {

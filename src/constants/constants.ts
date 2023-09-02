@@ -1,4 +1,7 @@
 export const baseUrl: string = 'http://192.168.1.144:8080';
+ export const header = {
+   Authorization: 'Basic YWRtaW46ZWFzeTEyMzQ=',
+ };
 // import { Article } from "./models/article";
 //  export  const dummyArticle: Article[] = [
 //     {

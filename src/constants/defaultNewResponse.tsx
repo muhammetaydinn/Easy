@@ -2,13 +2,13 @@ export const defaultNewResponse = {
   content: [
     {
       newsUUID: 'a6284b7e-88ef-47c8-b771-8a36bca9ca8b',
-      title: 'test1',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget quam eu massa ultrices scelerisque. Quisque et erat lacinia, cursus tellus et, dignissim est.',
+      title: 'How to config Firebase and Flutter ',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n Nam eget quam eu massa ultri\nces scelerisque. Quisque et erat lacinia,\n cursus tellus et, \ndignissim est.',
       image:
-        'https://miro.medium.com/v2/resize:fit:1358/1*cG6U1qstYDijh9bPL42e-Q.jpeg',
+        'https://miro.medium.com/v2/resize:fit:0/1*o1YsDI3ShZ8HY49CW3aImQ.png',
       author: {
         userId: '3b4e5a25-6e23-43f0-ae63-187fdc1cdfb9',
-        name: 'user6',
+        name: 'Muhammet Aydın',
         image: 'https://cdn-icons-png.flaticon.com/512/1053/1053244.png',
         userToken: '1',
         role: 1,

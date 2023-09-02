@@ -1,5 +1,6 @@
 import {ErrorInfo, useEffect, useState} from 'react';
 import axios from 'axios';
+import { header } from '../constants/constants';
 
 const useFetch = (url:string) => {
   const [loading, setLoading] = useState(true);
@@ -11,7 +12,7 @@ const useFetch = (url:string) => {
       //   const response = await axios.get(url);
       //   setData(response.data);
 
-      const {data: responseData} = await axios.get(url);
+      const {data: responseData} = await axios.get(url,{headers:header});
       setData(responseData);
 
       setLoading(false);

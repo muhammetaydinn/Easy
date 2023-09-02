@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {baseUrl} from '../../constants';
+import {baseUrl, header} from '../../constants/constants';
 import {Platform} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -18,7 +18,7 @@ async function sendData(token: string) {
   console.log('body', body);
   if (token != null && token.length >= 0) {
     try {
-      const response = await axios.post(`${baseUrl}/api/device/new`, body);
+      const response = await axios.post(`${baseUrl}/api/device/new`, body,{headers:header});
       console.log(response);
       if (response.status == 201) {
         await AsyncStorage.setItem('fcmToken', token);
@@ -27,7 +27,7 @@ async function sendData(token: string) {
         console.log('Token not saved');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error sending data:', error);
     }
   }
 }

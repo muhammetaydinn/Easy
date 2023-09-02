@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import getNewFCMToken from './get_new_FCM_token';
 import sendData from './send_data';
 
-const check_FCM_token = async () => {
+ export const check_FCM_token = async () => {
   try {
     const storedToken = await AsyncStorage.getItem('fcmToken');
     if (storedToken) {
@@ -17,5 +17,12 @@ const check_FCM_token = async () => {
     console.error('Error checking FCM:', error);
   }
 };
+export function check() {
+  try {
+    check_FCM_token();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-export default check_FCM_token;
+

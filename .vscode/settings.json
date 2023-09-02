@@ -1,0 +1,40 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true,
+        "__tests__": true,
+        ".bundle": true,
+        ".vscode": true,
+        "node_modules": true,
+        ".eslintrc.js": true,
+        ".gitignore": true,
+        ".prettierrc.js": true,
+        ".watchmanconfig": true,
+        "jest.config.js": true,
+        "metro.config.js": true,
+        "react-native.config.js": true,
+        "tsconfig.json": true
+    },
+    "hide-files.files": [
+        "__tests__",
+        ".bundle",
+        ".vscode",
+        "node_modules",
+        ".eslintrc.js",
+        ".gitignore",
+        ".prettierrc.js",
+        ".watchmanconfig",
+        "jest.config.js",
+        "metro.config.js",
+        "react-native.config.js",
+        "tsconfig.json"
+    ]
+}

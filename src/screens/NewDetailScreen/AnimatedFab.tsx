@@ -1,8 +1,27 @@
-import { Animated, StyleSheet } from "react-native";
-import { height, navbarHeight } from "../../utils/hw";
-import { FAB } from "react-native-paper";
+import {Animated, Dimensions, StatusBar, StyleSheet} from 'react-native';
+import {height} from '../../utils/hw';
+import {FAB} from 'react-native-paper';
+import {Comment} from '../../models/news';
+import {RootStackParams} from '../../navigators/Main';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-export const AnimatedFab = (translateYe: any) => {
+export const AnimatedFab: React.FC<{comments: Comment[]; translateYe: any}> = ({
+  comments,
+  translateYe,
+}) => {
+  const screenHeight = Dimensions.get('screen').height;
+  const windowHeight = Dimensions.get('window').height;
+  const navbarHeight =
+    screenHeight - windowHeight + StatusBar!.currentHeight! ?? 0;
+  console.log('navbarHeight', navbarHeight);
+  console.log('height', height);
+  console.log('screenHeight', screenHeight);
+  console.log('windowHeight', windowHeight);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  console.log(comments);
+  console.log('fab');
   return (
     <Animated.View
       style={{
@@ -15,7 +34,7 @@ export const AnimatedFab = (translateYe: any) => {
         height: 50,
         transform: [{translateY: translateYe}],
         position: 'absolute',
-        top: height - navbarHeight,
+        top: windowHeight - 50,
         right: 0,
         left: 0,
         zIndex: 1,
@@ -32,7 +51,13 @@ export const AnimatedFab = (translateYe: any) => {
         icon="comment-multiple-outline"
         color="white"
         style={styles.fab}
-        onPress={() => console.log('Pressed')}
+        onPress={() => {
+          navigation.navigate(
+            'CommentsScreen',
+
+            {comment: comments},
+          );
+        }}
       />
       <FAB
         icon="bookmark-plus-outline"
@@ -44,7 +69,6 @@ export const AnimatedFab = (translateYe: any) => {
   );
 };
 const styles = StyleSheet.create({
-
   fab: {
     backgroundColor: 'green',
     borderRadius: 50,

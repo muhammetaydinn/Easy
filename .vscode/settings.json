@@ -21,7 +21,10 @@
         "jest.config.js": true,
         "metro.config.js": true,
         "react-native.config.js": true,
-        "tsconfig.json": true
+        "tsconfig.json": true,
+        "src/screens/NewDetailScreen/new.tsx": true,
+        "android/app/src/main/res/drawable/launch_screen.xml": true,
+        "src/hooks/useCategoriesFetch.ts": true
     },
     "hide-files.files": [
         "__tests__",
@@ -35,6 +38,9 @@
         "jest.config.js",
         "metro.config.js",
         "react-native.config.js",
-        "tsconfig.json"
+        "tsconfig.json",
+        "src/screens/NewDetailScreen/new.tsx",
+        "android/app/src/main/res/drawable/launch_screen.xml",
+        "src/hooks/useCategoriesFetch.ts"
     ]
 }

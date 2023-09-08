@@ -20,6 +20,7 @@ export interface Content {
   author: Author;
   creationTime: string;
   category: Category;
+  comments: Comment[];
 }
 
 export interface Author {
@@ -49,4 +50,11 @@ export interface Sort {
   sorted: boolean;
   unsorted: boolean;
 }
+export interface Comment {
+  commentUUID: string;
+  text: string;
+  author: Author;
+  creationTime: string;
+}
+  
 

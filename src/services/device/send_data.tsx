@@ -15,7 +15,7 @@ async function sendData(token: string) {
     deviceType: Platform.OS.toUpperCase(),
     deviceToken: token,
   };
-  console.log('body', body);
+ 
   if (token != null && token.length >= 0) {
     try {
       const response = await axios.post(`${baseUrl}/api/device/new`, body,{headers:header});

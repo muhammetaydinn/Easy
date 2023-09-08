@@ -1,9 +1,17 @@
+import 'react-native-gesture-handler';
 import messaging from '@react-native-firebase/messaging';
 import Toast from 'react-native-toast-message';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
-import {Button, Platform, SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
+import {
+  Button,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {PermissionsAndroid} from 'react-native';
 import {check, check_FCM_token} from './services/device/check_FCM_token';
 import {NavigationContainer} from '@react-navigation/native';
@@ -17,6 +25,9 @@ import {showToast} from './components/atoms/toast';
 import {MyTheme} from './utils/theme';
 import Tabs from './navigators/Tabs';
 import SplashScreen from 'react-native-splash-screen';
+import { PaperProvider } from 'react-native-paper';
+import axios from 'axios';
+import { baseUrl } from './constants/constants';
 
 async function androidPermission(): Promise<void> {
   await PermissionsAndroid.request(
@@ -25,10 +36,11 @@ async function androidPermission(): Promise<void> {
 }
 
 function App(): JSX.Element {
+
   androidPermission(); // for android api +33
   useEffect(() => {
     if (Platform.OS === 'android') {
-      SplashScreen.hide();// for splash screen android
+      SplashScreen.hide(); // for splash screen android
     }
     check();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -38,7 +50,6 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <>
       <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
         <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
         <NavigationContainer theme={MyTheme}>
@@ -46,7 +57,6 @@ function App(): JSX.Element {
         </NavigationContainer>
         <Toast />
       </SafeAreaView>
-    </>
   );
 }
 

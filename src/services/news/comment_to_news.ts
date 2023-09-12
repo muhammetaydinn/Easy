@@ -1,26 +1,30 @@
 import axios from 'axios';
-import {baseUrl, header} from '../../constants/constants';
+import {baseUrl} from '../../constants/constants';
+import {getDataJSON} from '../storage/asyncStorage';
+import { getHeader } from '../../utils/header';
 
-export const commentToNew = async (
-  text: string,
 
-  userId: string,
-  newsId: string,
-) => {
+export const commentToNew = async (text: string, newsId: string) => {
+  const user = await getDataJSON('user');
+  const jwtToken = user.jwt;
+  const userId = user.userId;
+  var header = await getHeader();
   try {
     const response = await axios.post(
-      `${baseUrl}/api/comment`,
+      `${baseUrl}/comment`,
       {
         text: text,
         author: {
-          userId: 'fdb3181c-2ba7-438c-aff7-6885f094b6cd',
+          userId: userId,
         },
-        newsId: 'ade5f6e1-d990-4f8e-91d0-f2956fd5c61e',
+        newsId: newsId,
       },
-      {headers: header},
+      {
+        headers: header
+      },
     );
-      if (response.status === 200) {
-        console.log('Comment was added');
+    if (response.status === 201) {
+      console.log('Comment was added');
     }
     console.log(response.data);
   } catch (error) {

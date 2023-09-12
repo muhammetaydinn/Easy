@@ -12,7 +12,6 @@ const requestUserPermission = async () => {
   if (enabled) {
     //   setToken((await messaging().getToken()).toString());
     token = (await messaging().getToken()).toString();
-    console.log('Got token:', token);
   } else {
     console.log('REQUEST PERMISSION DENIED');
   }

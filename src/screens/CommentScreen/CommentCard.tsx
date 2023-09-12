@@ -19,16 +19,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    marginVertical: 10,
-        marginHorizontal: 10,
+    padding: 10,
         height: 100,
     width: '100%',
   },
   commentContainer: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'red',
-    borderRadius: 10,
+    backgroundColor: "pink",
+    borderRadius: 25,
     padding: 10,
   },
   commentHeader: {

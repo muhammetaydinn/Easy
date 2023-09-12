@@ -1,9 +1,8 @@
-import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
-import {NewDetailScreen} from '../screens/NewDetailScreen/NewDetailScreen';
-import {Comment, Content} from '../models/news';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Comment, Content } from '../models/news';
 import CommentsScreen from '../screens/CommentScreen/CommentsScreen';
+import HomeScreen from '../screens/HomeScreen';
+import { NewDetailScreen } from '../screens/NewDetailScreen/NewDetailScreen';
 import PostNewsScreen from '../screens/PostNewsScreen/PostNewsScreen';
 
 export type RootStackParams = {

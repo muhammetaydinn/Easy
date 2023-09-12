@@ -1,11 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeStack from "./Main";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { DetailsScreen } from "../screens/detailsscreen";
+import HomeStack from "./Main";
+import SearchScreen from "../screens/SearchScreen/SearchScreen";
 
 export type TabParamList = {
   HomeStack: any;
-  Details: any;
+  SearchScreen: any;
   Details2: any;
   Details3: any;
 };
@@ -42,8 +43,8 @@ function Tabs() {
               />
             ),
           }}
-          name="Details"
-          component={DetailsScreen}
+          name="SearchScreen"
+          component={SearchScreen}
         />
         <Tab.Screen
           options={{

@@ -1,23 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Button,
-  FlatList,
   ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  View
 } from 'react-native';
-import {Text} from '../components/atoms/Text';
-import {height, width} from '../utils/hw';
+import { FAB } from 'react-native-paper';
+import { ArticleSeparator } from '../components/atoms/ArticleSeperator';
+import { Text } from '../components/atoms/Text';
 import ArticleCard from '../components/molecules/articlecard';
 import ScrollableTexts from '../components/molecules/sticky';
-import {fetchNewsArticles} from '../services/news/fetch_news'; // Dizin doğru şekilde güncellenmeli
-import {Content, Root} from '../models/news';
-import {ArticleSeparator} from '../components/atoms/ArticleSeperator';
-import {defaultNewResponse} from '../constants/defaultNewResponse';
-import {FAB} from 'react-native-paper';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParams} from '../navigators/Main';
+import { Content, Root } from '../models/news';
+import { RootStackParams } from '../navigators/Main';
+import { fetchNewsArticles } from '../services/news/fetch_news'; // Dizin doğru şekilde güncellenmeli
+import { height, width } from '../utils/hw';
 type Props = NativeStackScreenProps<RootStackParams, 'HomeScreen'>;
 const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   // const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -28,6 +25,8 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   const [dataSource, setDataSource] = useState<Content[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isListEnd, setIsListEnd] = useState<boolean>(false);
+
+
   const renderFooter = () => {
     return (
       <View style={styles.footerContainer}>
@@ -41,9 +40,11 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
       console.log('fetching data');
       try {
         const articles = await fetchNewsArticles(page, 5);
+
         if (articles.content && articles.content.length > 0) {
           setPage(page + 1);
           setDataSource([...dataSource, ...articles.content]);
+          
           setLoading(false);
         } else {
           setIsListEnd(true);

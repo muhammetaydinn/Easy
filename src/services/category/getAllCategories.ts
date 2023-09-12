@@ -1,9 +1,13 @@
 import axios from 'axios';
-import {baseUrl, header} from '../../constants/constants';
+import {baseUrl} from '../../constants/constants';
+import {getHeader} from '../../utils/header';
 
 export const getAllCategories = async () => {
+  var header = await getHeader();
   try {
-    const response = await axios.get(`${baseUrl}/api/categories`,{headers:header});
+    const response = await axios.get(`${baseUrl}/categories`, {
+      headers: header,
+    });
     console.log(response.data);
     if (response.status >= 200 && response.status < 300) {
       return response.data;

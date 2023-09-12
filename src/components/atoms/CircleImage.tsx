@@ -6,6 +6,8 @@ interface CircleImageProps {
   size: number;
   whratio?: number;
   radius?: number;
+  isProfile?: boolean;
+  isImage?: boolean;
 }
 
 const CImage: React.FC<CircleImageProps> = ({
@@ -13,6 +15,8 @@ const CImage: React.FC<CircleImageProps> = ({
   size,
   radius = 0,
   whratio = 1,
+  isProfile = false,
+  isImage = false,
 }) => {
   return (
     <View
@@ -20,7 +24,19 @@ const CImage: React.FC<CircleImageProps> = ({
         styles.circle,
         {width: size * whratio, height: size / whratio, borderRadius: radius},
       ]}>
-      {uri !== '' && uri!=null? <Image source={{uri: uri}} style={styles.image} /> : null }
+      {uri !== '' && uri != null ? (
+        <Image source={{uri: uri}} style={styles.image} />
+      ) : isImage ? (
+        <Image
+          source={require('../../../assets/images/default_image.png')}
+          style={styles.image}
+        />
+      ) : isProfile ? (
+        <Image
+          source={require('../../../assets/images/default_profile.jpg')}
+          style={styles.image}
+        />
+      ) : null}
     </View>
   );
 };

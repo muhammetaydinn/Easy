@@ -1,10 +1,13 @@
 import axios from 'axios';
+//KUTUPHANE
+// export const baseUrl: string = 'http://10.0.2.2:8090/api';
+//OFIS
+// export const baseUrl: string = 'http://192.168.1.144:8080/api';
+//EV
+export const baseUrl: string = 'http://192.168.1.123:8090/api';
 
-export const baseUrl: string = 'http://172.29.0.1:8090';
-export const header = {
-  Authorization:
-    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5LmRlbW9AZ21haWwuY29tIiwiaWF0IjoxNjk0MTkyMjczLCJleHAiOjE2OTYyNjU4NzN9.l1nwIrTEX8-V1n9k-EqoGSH6Crsmjxahz9J98mmVCUc',
-};
+
+
 
 // import { Article } from "./models/article";
 //  export  const dummyArticle: Article[] = [

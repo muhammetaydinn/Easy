@@ -1,16 +1,13 @@
-import {Button, StyleSheet, TextInput, Touchable, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {Text} from '../../components/atoms/Text';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../navigators/Main';
-import {Menu} from 'react-native-paper';
-import {getAllCategories} from '../../services/category/getAllCategories';
-import {Categories} from '../../models/categories';
-import {CategoryMenu} from './CategoryMenu';
-import {getAllCategoriesHiearachy} from '../../services/category/getAllCategoriesHiearcy';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {postNew} from '../../services/news/postNews';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React, { useEffect } from 'react';
+import { Button, TextInput, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { Text } from '../../components/atoms/Text';
+import { Categories } from '../../models/categories';
+import { RootStackParams } from '../../navigators/Main';
+import { getAllCategories } from '../../services/category/getAllCategories';
+import { getAllCategoriesHiearachy } from '../../services/category/getAllCategoriesHiearcy';
+import { postNew } from '../../services/news/postNews';
 
 type Props = NativeStackScreenProps<RootStackParams, 'PostNewsScreen'>;
 const PostNewsScreen: React.FC<Props> = ({route, navigation}) => {

@@ -6,22 +6,17 @@ import {RootStackParams} from '../../navigators/Main';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-export const AnimatedFab: React.FC<{comments: Comment[]; translateYe: any}> = ({
-  comments,
-  translateYe,
-}) => {
+export const AnimatedFab: React.FC<{
+  comments: Comment[];
+  translateYe: any;
+  newsId: string;
+}> = ({comments, translateYe, newsId}) => {
   const screenHeight = Dimensions.get('screen').height;
   const windowHeight = Dimensions.get('window').height;
-  const navbarHeight =
-    screenHeight - windowHeight + StatusBar!.currentHeight! ?? 0;
-  console.log('navbarHeight', navbarHeight);
-  console.log('height', height);
-  console.log('screenHeight', screenHeight);
-  console.log('windowHeight', windowHeight);
+  const statusbar = StatusBar!.currentHeight;
+  const navbarHeight = screenHeight - windowHeight + statusbar! ?? 0;
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
-  console.log(comments);
-  console.log('fab');
   return (
     <Animated.View
       style={{
@@ -34,7 +29,7 @@ export const AnimatedFab: React.FC<{comments: Comment[]; translateYe: any}> = ({
         height: 50,
         transform: [{translateY: translateYe}],
         position: 'absolute',
-        top: windowHeight - 50,
+        top: screenHeight - 50 - navbarHeight,
         right: 0,
         left: 0,
         zIndex: 1,
@@ -52,11 +47,10 @@ export const AnimatedFab: React.FC<{comments: Comment[]; translateYe: any}> = ({
         color="white"
         style={styles.fab}
         onPress={() => {
-          navigation.navigate(
-            'CommentsScreen',
-
-            {comment: comments},
-          );
+          navigation.navigate('CommentsScreen', {
+            comment: comments,
+            newsId: newsId,
+          });
         }}
       />
       <FAB

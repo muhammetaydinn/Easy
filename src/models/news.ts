@@ -13,7 +13,7 @@ export interface Root {
 }
 
 export interface Content {
-  newsUUID: string;
+  newsId: string;
   title: string;
   text: string;
   image?: string;
@@ -56,5 +56,3 @@ export interface Comment {
   author: Author;
   creationTime: string;
 }
-  
-

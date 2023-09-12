@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {baseUrl, header} from '../../constants/constants';
+import {baseUrl} from '../../constants/constants';
+import { getHeader } from '../../utils/header';
 
 export const postNew = async (
   title: string,
@@ -12,8 +13,9 @@ export const postNew = async (
   image?: string,
 ) => {
   try {
+      var header = await getHeader();
     const response = await axios.post(
-      `${baseUrl}/api/news`,
+      `${baseUrl}/news`,
       {
         title: title,
         text: text,

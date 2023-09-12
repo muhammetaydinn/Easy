@@ -12,7 +12,6 @@ import {AnimatedFab} from './AnimatedFab';
 type Props = NativeStackScreenProps<RootStackParams, 'NewDetailScreen'>;
 
 export const NewDetailScreen: React.FC<Props> = ({navigation, route}) => {
-  console.log(route.params.content.comments);
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, 64);
   const translateY = diffClamp.interpolate({
@@ -59,7 +58,12 @@ export const NewDetailScreen: React.FC<Props> = ({navigation, route}) => {
         </View>
       </ScrollView>
 
-      {AnimatedFab({comments: route.params.content.comments, translateYe})}
+      {AnimatedFab({
+        comments: route.params.content.comments,
+
+        translateYe,
+        newsId: route.params.content.newsId,
+      })}
     </View>
   );
 };

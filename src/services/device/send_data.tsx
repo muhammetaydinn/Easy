@@ -1,9 +1,9 @@
 import axios from 'axios';
-import {baseUrl, header} from '../../constants/constants';
+import {baseUrl} from '../../constants/constants';
 import {Platform} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-async function sendData(token: string) {
+async function sendData(fcmToken: string) {
   const currentTime = new Date();
   const gmtOffset = currentTime.getTimezoneOffset() / 60;
   const gmtTime = new Date(
@@ -13,15 +13,20 @@ async function sendData(token: string) {
   var body = {
     timeZone: gmtPart.toString(),
     deviceType: Platform.OS.toUpperCase(),
-    deviceToken: token,
+    deviceToken: fcmToken,
   };
- 
-  if (token != null && token.length >= 0) {
+
+  if (fcmToken != null && fcmToken.length >= 0) {
     try {
-      const response = await axios.post(`${baseUrl}/api/device/new`, body,{headers:header});
-      console.log(response);
-      if (response.status == 201) {
-        await AsyncStorage.setItem('fcmToken', token);
+      const response = await axios.post(`${baseUrl}/device/new`, body,
+      );
+      console.log('response', response.data);
+      if (response.status >= 200 && response.status < 300) {
+        console.log('response', response.data);
+        await AsyncStorage.setItem('fcmToken', fcmToken);
+        //TODO: 
+        await AsyncStorage.setItem('deviceId', response.data.toString());
+// await AsyncStorage.setItem('deviceId', response.data.deviceID.toString());
         console.log('Token saved');
       } else {
         console.log('Token not saved');

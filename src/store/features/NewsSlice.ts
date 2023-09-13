@@ -11,16 +11,14 @@ export interface News {
   pageSize: number;
   loading: boolean;
   error: string | null;
-  isListEnd: boolean;
 }
 //initial state
 const initialState: News = {
   news: [],
   pageNumber: 1,
-  pageSize: 3,
+  pageSize: 10,
   loading: false,
   error: null,
-  isListEnd: false,
 };
 ///news?pageNumber=1&pageSize=20&sortBy=creationTime
 export const fetchNews = createAsyncThunk(

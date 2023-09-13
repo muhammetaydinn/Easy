@@ -1,26 +1,34 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
-import {FAB} from 'react-native-paper';
-import {ArticleSeparator} from '../components/atoms/ArticleSeperator';
-import {Text} from '../components/atoms/Text';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React, { useEffect } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Text } from '../components/atoms/Text';
+
+import { ActivityIndicator } from 'react-native-paper';
+import { ArticleSeparator } from '../components/atoms/ArticleSeperator';
 import ArticleCard from '../components/molecules/articlecard';
 import ScrollableTexts from '../components/molecules/sticky';
-import {Content, Root} from '../models/news';
-import {RootStackParams} from '../navigators/Main';
-import {fetchNewsArticles} from '../services/news/fetch_news'; // Dizin doğru şekilde güncellenmeli
-import {height, width} from '../utils/hw';
-type Props = NativeStackScreenProps<RootStackParams, 'HomeScreen'>;
+import { TabParamList } from '../navigators/Tabs';
+import { fetchNews, setPageNumber } from '../store/features/NewsSlice';
+import { useAppDispatch, useAppSelector } from '../store/store';
+import { height, width } from '../utils/hw';
+type Props = NativeStackScreenProps<TabParamList, 'SearchScreen'>;
 const HomeScreen: React.FC<Props> = ({route, navigation}) => {
-  // const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-
-  const [newsArticles, setNewsArticles] = useState<Root>();
-  const [loading, setLoading] = useState<boolean>(false);
-  //TODO: INTERNET OLMADIGI DURUMDA DEFAULT  (defaultNewResponse as Root).content ya da
-  const [dataSource, setDataSource] = useState<Content[]>([]);
-  const [page, setPage] = useState<number>(1);
-  const [isListEnd, setIsListEnd] = useState<boolean>(false);
-
+  const dispatch = useAppDispatch();
+  const {news, pageNumber, pageSize, loading, error} = useAppSelector(
+    state => state.NewsSlice,
+  );
+  useEffect(() => {
+    // Fetch news data when the component is mounted
+    dispatch(
+      fetchNews({
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      }),
+    );
+  }, [dispatch, pageNumber, pageSize]);
+  const loadMoreNews = () => {
+    dispatch(setPageNumber(pageNumber + 1));
+  };
   const renderFooter = () => {
     return (
       <View style={styles.footerContainer}>
@@ -28,35 +36,11 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
       </View>
     );
   };
-  const fetchData = async () => {
-    if (!loading && !isListEnd) {
-      setLoading(true);
-      console.log('fetching data');
-      try {
-        const articles = await fetchNewsArticles(page, 5);
-
-        if (articles.content && articles.content.length > 0) {
-          setPage(page + 1);
-          setDataSource([...dataSource, ...articles.content]);
-
-          setLoading(false);
-        } else {
-          setIsListEnd(true);
-          setLoading(false);
-        }
-      } catch (error) {
-        console.error('Error fetching news articles:', error);
-      }
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
       {/* TODO: ScrollTableTexts component must be sticky*/}
+      {loading && <Text>Loading...</Text>}
+      {error && <Text>Error: {error}</Text>}
       <FlatList
         ListHeaderComponent={() => (
           <View>
@@ -64,26 +48,13 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
             <ScrollableTexts />
           </View>
         )}
-        data={dataSource}
+        data={news}
         keyExtractor={(item, index) => index.toString()}
         ItemSeparatorComponent={() => <ArticleSeparator />}
         renderItem={({item}) => <ArticleCard article={item} />}
-        ListFooterComponent={renderFooter}
-        onEndReached={fetchData}
         onEndReachedThreshold={0.5}
-      />
-      <FAB
-        icon="plus"
-        color="white"
-        style={styles.fab}
-        onPress={() => {
-          navigation.navigate(
-            'PostNewsScreen',
-            // {
-            //   // onGoBack: () => fetchData()
-            // },
-          );
-        }}
+        onEndReached={loadMoreNews}
+        ListFooterComponent={renderFooter}
       />
     </View>
   );

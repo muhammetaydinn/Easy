@@ -1,33 +1,34 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useEffect } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import { Text } from '../components/atoms/Text';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import React, {useEffect} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
+import {Text} from '../components/atoms/Text';
 
-import { ActivityIndicator } from 'react-native-paper';
-import { ArticleSeparator } from '../components/atoms/ArticleSeperator';
+import {ActivityIndicator} from 'react-native-paper';
+import {ArticleSeparator} from '../components/atoms/ArticleSeperator';
 import ArticleCard from '../components/molecules/articlecard';
 import ScrollableTexts from '../components/molecules/sticky';
-import { TabParamList } from '../navigators/Tabs';
-import { fetchNews, setPageNumber } from '../store/features/NewsSlice';
-import { useAppDispatch, useAppSelector } from '../store/store';
-import { height, width } from '../utils/hw';
+import {TabParamList} from '../navigators/Tabs';
+import {fetchNews, setPageNumber} from '../store/features/NewsSlice';
+import {useAppDispatch, useAppSelector} from '../store/store';
+import {height, width} from '../utils/hw';
 type Props = NativeStackScreenProps<TabParamList, 'SearchScreen'>;
 const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   const dispatch = useAppDispatch();
-  const {news, pageNumber, pageSize, loading, error} = useAppSelector(
-    state => state.NewsSlice,
-  );
+  const {news, pageNumber, pageSize, loading, error, isListEnd} =
+    useAppSelector(state => state.NewsSlice);
   useEffect(() => {
     // Fetch news data when the component is mounted
     dispatch(
-      fetchNews({
-        pageNumber: pageNumber,
-        pageSize: pageSize,
-      }),
-    );
+          fetchNews({
+            pageNumber: pageNumber,
+            pageSize: pageSize,
+          }),
+        )
+      
   }, [dispatch, pageNumber, pageSize]);
   const loadMoreNews = () => {
-    dispatch(setPageNumber(pageNumber + 1));
+   !isListEnd
+      ?  dispatch(setPageNumber(pageNumber + 1)):{}
   };
   const renderFooter = () => {
     return (

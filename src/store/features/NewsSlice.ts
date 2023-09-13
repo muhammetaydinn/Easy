@@ -11,34 +11,39 @@ export interface News {
   pageSize: number;
   loading: boolean;
   error: string | null;
+  isListEnd: boolean;
 }
 //initial state
 const initialState: News = {
   news: [],
   pageNumber: 1,
-  pageSize: 10,
+  pageSize: 1,
   loading: false,
   error: null,
+  isListEnd: false,
+
+
 };
 ///news?pageNumber=1&pageSize=20&sortBy=creationTime
 export const fetchNews = createAsyncThunk(
   'news/fetchNews',
-  async ({pageNumber, pageSize}: {pageNumber: number; pageSize: number}) => {
-    console.log('fetchNews');
-    var header = await getHeader();
+  async ({ pageNumber, pageSize }: { pageNumber: number; pageSize: number }) => {
+    //check is the list is end
+      console.log('fetchNews');
+      var header = await getHeader();
 
-    const response = await axios.get(
-      baseUrl +
-        `/news?pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=creationTime`,
-      {
-        headers: header,
-      },
-    );
-    console.log(response.data);
-    // const data = await response.data;
-    // console.log(data);
-    // console.log(data.content);
-    return response.data as Root;
+      const response = await axios.get(
+        baseUrl +
+          `/news?pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=creationTime`,
+        {
+          headers: header,
+        },
+      );
+      // const data = await response.data;
+      // console.log(data);
+      // console.log(data.content);
+      return response.data as Root;
+  
   },
 );
 
@@ -95,8 +100,10 @@ export const NewsSlice = createSlice({
   //slice reducers
   reducers: {
     setPageNumber(state, action: PayloadAction<number>) {
-      state.pageNumber = action.payload;
+      console.log("setPageNumber",state.pageNumber)
+    state.isListEnd? {}: state.pageNumber = action.payload;
     },
+    
   },
   extraReducers: builder => {
     //fulffilled means  that the promise was resolved
@@ -114,6 +121,10 @@ export const NewsSlice = createSlice({
         } else {
           state.loading = false;
         }
+        if(action.payload.last ==true){
+          state.isListEnd = true;
+        }
+        
       })
       .addCase(fetchNews.rejected, (state, action) => {
         state.loading = false;

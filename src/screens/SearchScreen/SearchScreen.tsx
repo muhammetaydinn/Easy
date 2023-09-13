@@ -8,19 +8,39 @@ import ScrollableTexts from '../../components/molecules/sticky';
 import {TabParamList} from '../../navigators/Tabs';
 import {useAppDispatch, useAppSelector} from '../../store/store';
 import {height, width} from '../../utils/hw';
-import { fetchNews } from '../../store/features/NewsSlice';
+import {fetchNews, setPageNumber} from '../../store/features/NewsSlice';
+import { ActivityIndicator } from 'react-native-paper';
 
 type Props = NativeStackScreenProps<TabParamList, 'SearchScreen'>;
-const SearchScreen: React.FC<Props> = ({route, navigation}) => {
+const SearchScreen: React.FC<Props> = ({ route, navigation }) => {
   const dispatch = useAppDispatch();
-  const news = useAppSelector(state => state.NewsSlice.news);
-useEffect(() => {
-  // Fetch news data when the component is mounted
-  dispatch(fetchNews());
-}, []);
+  const {news, pageNumber, pageSize, loading, error} = useAppSelector(
+    state => state.NewsSlice,
+  );
+  useEffect(() => {
+    // Fetch news data when the component is mounted
+    dispatch(
+      fetchNews({
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      }),
+    );
+  }, [dispatch, pageNumber, pageSize]);
+  const loadMoreNews = () => {
+    dispatch(setPageNumber(pageNumber + 1));
+  };
+ const renderFooter = () => {
+    return (
+      <View style={styles.footerContainer}>
+        {loading ? <ActivityIndicator size="large" /> : null}
+      </View>
+    );
+  };
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
       {/* TODO: ScrollTableTexts component must be sticky*/}
+      {loading && <Text>Loading...</Text>}
+      {error && <Text>Error: {error}</Text>}
       <FlatList
         ListHeaderComponent={() => (
           <View>
@@ -33,6 +53,8 @@ useEffect(() => {
         ItemSeparatorComponent={() => <ArticleSeparator />}
         renderItem={({item}) => <ArticleCard article={item} />}
         onEndReachedThreshold={0.5}
+        onEndReached={loadMoreNews}
+        ListFooterComponent={renderFooter}
       />
     </View>
   );

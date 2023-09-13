@@ -7,27 +7,47 @@ import {getHeader} from '../../utils/header';
 //interface
 export interface News {
   news: Content[];
+  pageNumber: number;
+  pageSize: number;
+  loading: boolean;
+  error: string | null;
+  isListEnd: boolean;
 }
 //initial state
 const initialState: News = {
   news: [],
+  pageNumber: 1,
+  pageSize: 3,
+  loading: false,
+  error: null,
+  isListEnd: false,
 };
+///news?pageNumber=1&pageSize=20&sortBy=creationTime
+export const fetchNews = createAsyncThunk(
+  'news/fetchNews',
+  async ({pageNumber, pageSize}: {pageNumber: number; pageSize: number}) => {
+    console.log('fetchNews');
+    var header = await getHeader();
 
-export const fetchNews = createAsyncThunk('news/fetchNews', async () => {
-  var header = await getHeader();
-
-  const response = await axios.get(baseUrl + `/news`, {
-    headers: header,
-  });
-  const data = await response.data;
-  console.log(data);
-  console.log(data.content);
-  return data.content;
-});
+    const response = await axios.get(
+      baseUrl +
+        `/news?pageNumber=${pageNumber}&pageSize=${pageSize}&sortBy=creationTime`,
+      {
+        headers: header,
+      },
+    );
+    console.log(response.data);
+    // const data = await response.data;
+    // console.log(data);
+    // console.log(data.content);
+    return response.data as Root;
+  },
+);
 
 export const addCommentToNews = createAsyncThunk(
   'news/addCommentToNews',
   async (params: {newsId: string; comment: string; thunkAPI?: any}) => {
+    console.log('addCommentToNews');
     const user = await getDataJSON('user');
     var header = await getHeader();
     const response = await axios.post(
@@ -76,17 +96,33 @@ export const NewsSlice = createSlice({
   initialState,
   //slice reducers
   reducers: {
-    setNews: (state, action: PayloadAction<Content[]>) => {
-      state.news = action.payload;
+    setPageNumber(state, action: PayloadAction<number>) {
+      state.pageNumber = action.payload;
     },
   },
   extraReducers: builder => {
     //fulffilled means  that the promise was resolved
     //rejected means that the promise was rejected
     //pending means that the promise is still pending
-    builder.addCase(fetchNews.fulfilled, (state, action) => {
-      state.news = action.payload;
-    });
+    builder
+      .addCase(fetchNews.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchNews.fulfilled, (state, action) => {
+        if (action.payload.content.length > 0) {
+          state.news.push(...action.payload.content);
+          state.loading = false;
+        } else {
+          state.loading = false;
+        }
+      })
+      .addCase(fetchNews.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'Error fetching news';
+      });
+
+    //addCommentToNews
     builder.addCase(addCommentToNews.fulfilled, (state, action) => {
       //find the news that has the same newsId as the newsId of the comment and assign the comment to it
       state.news
@@ -96,5 +132,5 @@ export const NewsSlice = createSlice({
   },
 });
 //just reducer not extra reducers
-export const {setNews} = NewsSlice.actions;
+export const {setPageNumber} = NewsSlice.actions;
 export default NewsSlice.reducer;

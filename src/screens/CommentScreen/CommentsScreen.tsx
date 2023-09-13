@@ -14,12 +14,15 @@ type Props = NativeStackScreenProps<RootStackParams, 'CommentsScreen'>;
 
 const CommentsScreen: React.FC<Props> = ({route, navigation}) => {
   const dispatch = useAppDispatch();
+  //TODO: get comments from redux cok fazla render yapıyo yoksa
   const [comment, setComment] = React.useState('');
-  const commentCount = route.params.comment.length;
+
   // get commments from redux
-  const aNew = useAppSelector( (state) => state.NewsSlice.news);
-    
-  console.log('aNew', aNew);
+  const aNew = useAppSelector(state => state.NewsSlice.news);
+  const commentCount =
+    aNew.find(item => item.newsId === route.params.newsId)?.comments.length ??
+    '0';
+  console.log('aNew', aNew.length);
 
   return (
     <View
@@ -53,7 +56,7 @@ const CommentsScreen: React.FC<Props> = ({route, navigation}) => {
           margin: 10,
         }}>
         <TextInput
-          placeholder='Write a comment'
+          placeholder="Write a comment"
           value={comment}
           onChangeText={text => {
             setComment(text);
@@ -80,6 +83,9 @@ const CommentsScreen: React.FC<Props> = ({route, navigation}) => {
             await commentToNew(comment, route.params.newsId);
             dispatch(
               addCommentToNews({comment: comment, newsId: route.params.newsId}),
+            ).then(() => {
+              setComment('');
+            }
             );
           }}>
           <Text>Post</Text>

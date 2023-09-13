@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, Image, StatusBar} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwtDecode from 'jwt-decode';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -49,8 +49,20 @@ const SplashScreen: React.FC<Props> = ({navigation, route}) => {
   }, [navigation]);
 
   return (
-    <View>
-      <ActivityIndicator size="large" />
+    <View style={{
+      flex: 1,
+    }}>
+      <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+      <Image source={require('../../../assets/images/screen_light.png')}
+      
+        //fill container
+        style={{
+          flex: 1,
+          width: null,
+          height: null,
+          resizeMode: 'cover',
+        }}
+      />
     </View>
   );
 };

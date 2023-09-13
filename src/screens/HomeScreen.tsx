@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import {Text} from '../components/atoms/Text';
 
-import {ActivityIndicator} from 'react-native-paper';
+import {ActivityIndicator, FAB} from 'react-native-paper';
 import {ArticleSeparator} from '../components/atoms/ArticleSeperator';
 import ArticleCard from '../components/molecules/articlecard';
 import ScrollableTexts from '../components/molecules/sticky';
@@ -11,7 +11,8 @@ import {TabParamList} from '../navigators/Tabs';
 import {fetchNews, setPageNumber} from '../store/features/NewsSlice';
 import {useAppDispatch, useAppSelector} from '../store/store';
 import {height, width} from '../utils/hw';
-type Props = NativeStackScreenProps<TabParamList, 'SearchScreen'>;
+import {RootStackParams} from '../navigators/Main';
+type Props = NativeStackScreenProps<RootStackParams, 'HomeScreen'>;
 const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   const dispatch = useAppDispatch();
   const {news, pageNumber, pageSize, loading, error, isListEnd} =
@@ -19,16 +20,14 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   useEffect(() => {
     // Fetch news data when the component is mounted
     dispatch(
-          fetchNews({
-            pageNumber: pageNumber,
-            pageSize: pageSize,
-          }),
-        )
-      
+      fetchNews({
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      }),
+    );
   }, [dispatch, pageNumber, pageSize]);
   const loadMoreNews = () => {
-   !isListEnd
-      ?  dispatch(setPageNumber(pageNumber + 1)):{}
+    !isListEnd ? dispatch(setPageNumber(pageNumber + 1)) : {};
   };
   const renderFooter = () => {
     return (
@@ -56,6 +55,19 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
         onEndReachedThreshold={0.5}
         onEndReached={loadMoreNews}
         ListFooterComponent={renderFooter}
+      />
+      <FAB
+        icon="plus"
+        color="white"
+        style={styles.fab}
+        onPress={() => {
+          navigation.navigate(
+            'PostNewsScreen',
+            // {
+            //   // onGoBack: () => fetchData()
+            // },
+          );
+        }}
       />
     </View>
   );

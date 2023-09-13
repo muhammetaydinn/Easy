@@ -1,17 +1,19 @@
 import axios from 'axios';
 import {baseUrl} from '../../constants/constants';
 import { getHeader } from '../../utils/header';
+import { getDataJSON } from '../storage/asyncStorage';
 
 export const postNew = async (
   title: string,
   text: string,
 
-  userId: string,
 
   categoryId: number,
 
   image?: string,
 ) => {
+  const user = await getDataJSON('user');
+  const userId = user.userId;
   try {
       var header = await getHeader();
     const response = await axios.post(
@@ -24,7 +26,7 @@ export const postNew = async (
           userId: userId,
         },
         category: {
-          categoryId: categoryId,
+          categoryId: categoryId??1,
         },
       },
       {headers: header},

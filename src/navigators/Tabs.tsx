@@ -3,12 +3,13 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { DetailsScreen } from "../screens/detailsscreen";
 import HomeStack from "./Main";
 import SearchScreen from "../screens/SearchScreen/SearchScreen";
+import ProfileStack from "./ProfileStack";
 
 export type TabParamList = {
   HomeStack: any;
   SearchScreen: any;
   Details2: any;
-  Details3: any;
+  ProfileStack: any;
 };
 const Tab = createBottomTabNavigator<TabParamList>();
 function Tabs() {
@@ -73,8 +74,8 @@ function Tabs() {
               />
             ),
           }}
-          name="Details3"
-          component={DetailsScreen}
+          name="ProfileStack"
+          component={ProfileStack}
         />
       </Tab.Navigator>
     );

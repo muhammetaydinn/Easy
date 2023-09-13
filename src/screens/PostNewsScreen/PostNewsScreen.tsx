@@ -100,8 +100,8 @@ const PostNewsScreen: React.FC<Props> = ({route, navigation}) => {
             title,
             text,
 
-            '33804b0c-af1f-4668-b592-b47709b427ec',
-            value ? value : 0,
+            
+            value ? value : 1,
 
             image,
           );

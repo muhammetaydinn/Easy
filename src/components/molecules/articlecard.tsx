@@ -8,9 +8,9 @@ import {Content} from '../../models/news';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigators/Main';
-import { timeRead } from '../../utils/timeread';
+import {timeRead} from '../../utils/timeread';
 
-const ArticleCard: React.FC<{article: Content}> = ({article}) => {
+const ArticleCard: React.FC<{ article: Content }> = ({ article }) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
   return (
@@ -26,7 +26,7 @@ const ArticleCard: React.FC<{article: Content}> = ({article}) => {
       <View style={{padding: 20}}>
         {/* pp ve isim */}
         <View style={{flexDirection: 'row'}}>
-          <CImage radius={20} size={20} uri={article.author?.image as string} />
+          <CImage isProfile={true} radius={20} size={20} uri={article.author?.image as string} />
           <Text style={{marginLeft: 10}}>{article.author?.name}</Text>
         </View>
         {/* 2 */}
@@ -53,6 +53,7 @@ const ArticleCard: React.FC<{article: Content}> = ({article}) => {
               size={70}
               whratio={1.3}
               uri={article.image as string}
+              isImage={true}
             />
           </View>
         </View>

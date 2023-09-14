@@ -39,8 +39,6 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
       {/* TODO: ScrollTableTexts component must be sticky*/}
-      {loading && <Text>Loading...</Text>}
-      {error && <Text>Error: {error}</Text>}
       <FlatList
         ListHeaderComponent={() => (
           <View>

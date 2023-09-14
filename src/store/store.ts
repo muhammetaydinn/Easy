@@ -1,14 +1,16 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import {LoginSlice} from './features/LoginSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { LoginSlice } from './features/LoginSlice';
+import { NewsSlice } from './features/NewsSlice';
 import { RegisterSlice } from './features/RegisterSlice';
-import { NewsSlice, fetchNews } from './features/NewsSlice';
+import { UserSlice } from './features/UserSlice';
 
 export const store = configureStore({
   reducer: {
     LoginSlice: LoginSlice.reducer,
     RegisterSlice: RegisterSlice.reducer,
     NewsSlice: NewsSlice.reducer,
+    UserSlice: UserSlice.reducer,
   },
   // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(fetchNews),
 });

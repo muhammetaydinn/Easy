@@ -1,11 +1,12 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import EditProfileScreen from '../screens/EditProfileScreen/EditProfileScreen';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
-import LoginScreen from '../screens/Auth/LoginScreen';
 
 export type ProfileStackParams = {
-  ProfileScreen: any;
+  ProfileScreen:{userId: string};
   SettingsScreen: any;
+  EditProfileScreen: any;
 };
 
 const ProfileStack = createNativeStackNavigator<ProfileStackParams>();
@@ -17,6 +18,10 @@ function AuthStack() {
       screenOptions={{headerShown: false}}>
       <ProfileStack.Screen name="ProfileScreen" component={ProfileScreen} />
       <ProfileStack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <ProfileStack.Screen
+        name="EditProfileScreen"
+        component={EditProfileScreen}
+      />
     </ProfileStack.Navigator>
   );
 }

@@ -17,7 +17,7 @@ export interface News {
 const initialState: News = {
   news: [],
   pageNumber: 1,
-  pageSize: 1,
+  pageSize: 10,
   loading: false,
   error: null,
   isListEnd: false,

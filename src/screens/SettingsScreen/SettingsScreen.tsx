@@ -1,10 +1,10 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
-import {Button} from 'react-native-paper';
-import {CustomAppBar} from '../../components/molecules/customAppBar';
-import {ProfileStackParams} from '../../navigators/ProfileStack';
-import {logoutStorage} from '../../services/storage/logout';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { Button } from 'react-native-paper';
+import { CustomAppBar } from '../../components/molecules/customAppBar';
+import { ProfileStackParams } from '../../navigators/ProfileStack';
+import { logoutStorage } from '../../services/storage/logout';
 type Props = NativeStackScreenProps<ProfileStackParams, 'SettingsScreen'>;
 const ProfileScreen: React.FC<Props> = ({route, navigation}) => {
   /*

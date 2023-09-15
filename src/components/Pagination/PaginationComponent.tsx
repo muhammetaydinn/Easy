@@ -1,22 +1,21 @@
 // NewsScreen.js
 import React, {useEffect} from 'react';
-import {Button, FlatList, StyleSheet, View} from 'react-native';
-import {useAppDispatch, useAppSelector} from '../../store/store';
-import NewsComponent from './newcom';
-import {fetchData, setPageNumber} from '../../store/features/PaginationSlice';
+import {FlatList, StyleSheet, View} from 'react-native';
 import {ActivityIndicator} from 'react-native-paper';
+import {fetchData, setPageNumber} from '../../store/features/PaginationSlice';
+import {useAppDispatch, useAppSelector} from '../../store/store';
 import {Text} from '../atoms/Text';
+import NewsComponent from './newcom';
 
 const PaginationScreen = ({apiUrl}: {apiUrl: string}) => {
   const dispatch = useAppDispatch();
-  const {error, loading, isListEnd, pageNumber, pageSize,content} =
-    useAppSelector(state => state.PaginationSlice);
+  const {loading, isListEnd, pageNumber, content} = useAppSelector(
+    state => state.PaginationSlice,
+  );
 
   useEffect(() => {
-    dispatch(
-      fetchData({apiUrl, page:pageNumber, pageSize: 1}),
-    ); // Fetch initial page with the provided API URL
-  }, [dispatch,pageNumber]);
+    dispatch(fetchData({apiUrl, page: pageNumber, pageSize: 1})); // Fetch initial page with the provided API URL
+  }, [dispatch, pageNumber]);
 
   const loadMore = () => {
     if (!isListEnd) {

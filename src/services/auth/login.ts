@@ -1,10 +1,7 @@
-import axios from 'axios';
-import {baseUrl} from '../../constants/constants';
-import {useAppSelector} from '../../store/store';
-import React from 'react';
-import {UserRegisterResponse} from '../../models/userRegisterResponse';
-import {getDataJSON, storeDataJSON} from '../storage/asyncStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import { baseUrl } from '../../constants/constants';
+import { storeDataJSON } from '../storage/asyncStorage';
 
 export const login = async (email: string, password: string) => {
   var deviceId: string | null = await AsyncStorage.getItem('deviceId');

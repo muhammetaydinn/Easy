@@ -11,7 +11,6 @@ axiosInstance.interceptors.request.use(async config => {
     const user = await getDataJSON("user");
     const token = user.jwt;
   if (token) {
-    console.log("Tokenvar", token)
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;

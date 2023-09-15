@@ -22,15 +22,12 @@
         "metro.config.js": true,
         "react-native.config.js": true,
         "tsconfig.json": true,
-        "src/screens/NewDetailScreen/new.tsx": true,
-        "android/app/src/main/res/drawable/launch_screen.xml": true,
         "src/hooks/useCategoriesFetch.ts": true,
         "babel.config.js": true,
         "Gemfile": true,
         "yarn.lock": true,
         "package.json": true,
-        "ios": true,
-        "android": true
+        "ios": true
     },
     "hide-files.files": [
         "__tests__",
@@ -45,14 +42,11 @@
         "metro.config.js",
         "react-native.config.js",
         "tsconfig.json",
-        "src/screens/NewDetailScreen/new.tsx",
-        "android/app/src/main/res/drawable/launch_screen.xml",
         "src/hooks/useCategoriesFetch.ts",
         "babel.config.js",
         "Gemfile",
         "yarn.lock",
         "package.json",
-        "ios",
-        "android"
+        "ios"
     ]
 }

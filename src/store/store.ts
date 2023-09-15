@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { LoginSlice } from './features/LoginSlice';
 import { NewsSlice } from './features/NewsSlice';
+import { PaginationSlice } from './features/PaginationSlice';
 import { RegisterSlice } from './features/RegisterSlice';
 import { UserSlice } from './features/UserSlice';
 
@@ -11,6 +12,7 @@ export const store = configureStore({
     RegisterSlice: RegisterSlice.reducer,
     NewsSlice: NewsSlice.reducer,
     UserSlice: UserSlice.reducer,
+    PaginationSlice: PaginationSlice.reducer,
   },
   // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(fetchNews),
 });

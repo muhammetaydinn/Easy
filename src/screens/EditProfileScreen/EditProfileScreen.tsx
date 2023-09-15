@@ -11,16 +11,17 @@ import {
 import { Button, TextInput } from 'react-native-paper';
 import CImage from '../../components/atoms/CircleImage';
 import { CustomAppBar } from '../../components/molecules/customAppBar';
+import { User } from '../../models/user';
 import { ProfileStackParams } from '../../navigators/ProfileStack';
 import { getDataJSON } from '../../services/storage/asyncStorage';
+import { getUserById } from '../../services/user/getUserById';
 import { updateUser } from '../../services/user/updateUser';
 
 type Props = NativeStackScreenProps<ProfileStackParams, 'EditProfileScreen'>;
 const EditProfileScreen: React.FC<Props> = ({route, navigation}) => {
-  const [userNFirst, setUserNameFirst] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
-  const [userImage, setUserImage] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [userModel, setUserModel] = useState<User>({} as User);
 
   useEffect(() => {
     // fetch user data from api
@@ -29,9 +30,9 @@ const EditProfileScreen: React.FC<Props> = ({route, navigation}) => {
     const getUserData = async () => {
       try {
         const user = await getDataJSON('user');
+        const model: User = await getUserById(user.userId);
+        setUserModel(model);
         setUserName(user.name);
-        setUserNameFirst(user.name);
-        setUserImage(user.image);
       } catch (error) {
         console.error('Error checking JWT expiration:', error);
         // Handle the error and navigate to an appropriate screen
@@ -115,7 +116,7 @@ const EditProfileScreen: React.FC<Props> = ({route, navigation}) => {
         <View style={{alignItems: 'flex-start', flexDirection: 'row'}}>
           {
             <CImage
-              uri={selectedImage ?? userImage}
+              uri={selectedImage ?? userModel.image}
               size={50}
               isProfile={true}
               radius={50}
@@ -148,7 +149,7 @@ const EditProfileScreen: React.FC<Props> = ({route, navigation}) => {
         </View>
         <View style={{marginTop: 20}} />
         <TextInput
-          placeholder={userName}
+          placeholder={userModel.name}
           onChangeText={text => {
             setUserName(text);
             console.log(text);
@@ -157,7 +158,7 @@ const EditProfileScreen: React.FC<Props> = ({route, navigation}) => {
         <View>
           <Button
             onPress={
-              selectedImage || userName != userNFirst
+              selectedImage || userName != userModel.name
                 ? () => {
                     console.log('save');
                     updateUser(userName, selectedImage);

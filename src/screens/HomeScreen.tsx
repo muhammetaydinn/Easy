@@ -1,17 +1,16 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useEffect} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
-import {Text} from '../components/atoms/Text';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React, { useEffect } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Text } from '../components/atoms/Text';
 
-import {ActivityIndicator, FAB} from 'react-native-paper';
-import {ArticleSeparator} from '../components/atoms/ArticleSeperator';
+import { ActivityIndicator, FAB } from 'react-native-paper';
+import { ArticleSeparator } from '../components/atoms/ArticleSeperator';
 import ArticleCard from '../components/molecules/articlecard';
 import ScrollableTexts from '../components/molecules/sticky';
-import {TabParamList} from '../navigators/Tabs';
-import {fetchNews, setPageNumber} from '../store/features/NewsSlice';
-import {useAppDispatch, useAppSelector} from '../store/store';
-import {height, width} from '../utils/hw';
-import {RootStackParams} from '../navigators/Main';
+import { RootStackParams } from '../navigators/Main';
+import { fetchNews, setPageNumber } from '../store/features/NewsSlice';
+import { useAppDispatch, useAppSelector } from '../store/store';
+import { height, width } from '../utils/hw';
 type Props = NativeStackScreenProps<RootStackParams, 'HomeScreen'>;
 const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   const dispatch = useAppDispatch();

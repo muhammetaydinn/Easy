@@ -7,7 +7,7 @@ import sendData from './send_data';
     const storedToken = await AsyncStorage.getItem('fcmToken');
     if (storedToken) {
       // Token exists, proceed to send data
-      console.log('Token var',storedToken);
+      console.log('Device Token var',storedToken);
     } else {
       // Token doesn't exist, get a new FCM token
       console.log("Token doesn't exist, get a new FCM token");

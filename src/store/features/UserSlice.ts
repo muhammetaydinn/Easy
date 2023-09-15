@@ -1,6 +1,6 @@
-import {PayloadAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { Follower, initalFollowers } from '../../models/follower';
 import axiosInstance from '../../services/axios/axios_instance';
-import {Follower, initalFollowers} from '../../models/follower';
 
 //interface
 export interface User {
@@ -41,7 +41,7 @@ export const getFollowers = createAsyncThunk(
       const response = await axiosInstance.get(
         `/user/following/${userId}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
       );
-      console.log('follower response', response);
+      console.log('follower responsedata', response.data);
       return response.data;
     } catch (error) {
       console.log('Error getFollowers', error);
@@ -64,7 +64,7 @@ export const getFollowing = createAsyncThunk(
       const response = await axiosInstance.get(
         `/user/followers/${userId}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
       );
-      console.log('following response', response);
+      console.log('following responsedata', response.data);
       return response.data;
     } catch (error) {
       console.log('Error getFollowing', error);

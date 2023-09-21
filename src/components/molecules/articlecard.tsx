@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigators/Main';
 import {timeRead} from '../../utils/timeread';
+import { readNews } from '../../services/interactions/read_news';
 
 const ArticleCard: React.FC<{ article: Content }> = ({ article }) => {
   const navigation =
@@ -18,6 +19,7 @@ const ArticleCard: React.FC<{ article: Content }> = ({ article }) => {
       onPress={() => {
         console.log('touchable opacity');
         //TODO: HATALI GOZUKUYOR OLABILIR TYPE DAN DOLAYI
+        readNews(article.newsId );
         navigation.navigate('NewDetailScreen', {content: article});
       }}
       activeOpacity={1}
@@ -26,7 +28,7 @@ const ArticleCard: React.FC<{ article: Content }> = ({ article }) => {
       <View style={{padding: 20}}>
         {/* pp ve isim */}
         <View style={{flexDirection: 'row'}}>
-          <CImage isProfile={true} radius={20} size={20} uri={article.author?.image as string} />
+          <CImage isProfile={true} radius={20} size={20} uri={article.author?.image??""} />
           <Text style={{marginLeft: 10}}>{article.author?.name}</Text>
         </View>
         {/* 2 */}

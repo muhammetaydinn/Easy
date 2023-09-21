@@ -16,6 +16,7 @@ export const uploadImage = async (selectedImage: any) => {
     name: 'image.jpg', // You can use any name you like here
   });
   try {
+    //TODO: 
     // Send a POST request to your server with the image data   //check response  200 or other
     const response = await fetch(baseUrl + '/news/image', {
       method: 'POST',

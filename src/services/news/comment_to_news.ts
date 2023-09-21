@@ -1,34 +1,23 @@
-import axios from 'axios';
-import {baseUrl} from '../../constants/constants';
-import {getDataJSON} from '../storage/asyncStorage';
-import { getHeader } from '../../utils/header';
+// import axiosInstance from '../axios/axios_instance';
+// import {getDataJSON} from '../storage/asyncStorage';
 
+// export const commentToNew = async (text: string, newsId: string) => {
+//   const user = await getDataJSON('user');
+//   const userId = user.userId;
+//   try {
+//     const response = await axiosInstance.post(`/comment`, {
+//       text: text,
 
-export const commentToNew = async (text: string, newsId: string) => {
-  const user = await getDataJSON('user');
-  const jwtToken = user.jwt;
-  const userId = user.userId;
-  var header = await getHeader();
-  try {
-    const response = await axios.post(
-      `${baseUrl}/comment`,
-      {
-        text: text,
-        author: {
-          userId: userId,
-        },
-        newsId: newsId,
-      },
-      {
-        headers: header
-      },
-    );
-    if (response.status === 201) {
-      console.log('Comment was added');
-    }
-    console.log(response.data);
-  } catch (error) {
-    console.error('Error fetching news commentToNew:', error);
-    throw error;
-  }
-};
+//       userId: userId,
+
+//       newsId: newsId,
+//     });
+//     if (response.status === 201) {
+//       console.log('Comment was added');
+//     }
+//     console.log(response.data);
+//   } catch (error) {
+//     console.error('Error fetching news commentToNew:', error);
+//     throw error;
+//   }
+// };

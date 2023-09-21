@@ -17,7 +17,7 @@ export const register = async (
     return 'Please fill all the fields';
   } else {
     try {
-      const response = await axios.post(`${baseUrl}/user/auth/register`, {
+      const response = await axios.post(`${baseUrl}/user`, {
         name: name,
         email: email,
         password: password,

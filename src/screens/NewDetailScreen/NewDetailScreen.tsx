@@ -59,10 +59,10 @@ export const NewDetailScreen: React.FC<Props> = ({navigation, route}) => {
       </ScrollView>
 
       {AnimatedFab({
-        comments: route.params.content.comments,
-
         translateYe,
         newsId: route.params.content.newsId,
+        bookmarks: route.params.content.bookmarks,
+        likes: route.params.content.likes,
       })}
     </View>
   );

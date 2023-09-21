@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Comment, Content } from '../models/news';
+import { Content } from '../models/news';
 import CommentsScreen from '../screens/CommentScreen/CommentsScreen';
 import HomeScreen from '../screens/HomeScreen';
 import { NewDetailScreen } from '../screens/NewDetailScreen/NewDetailScreen';
@@ -8,7 +8,7 @@ import PostNewsScreen from '../screens/PostNewsScreen/PostNewsScreen';
 export type RootStackParams = {
   HomeScreen: any;
   NewDetailScreen: {content: Content};
-  CommentsScreen: {comment: Comment[], newsId: string};
+  CommentsScreen: { newsId: string};
   PostNewsScreen: any;
 };
 

@@ -87,8 +87,8 @@ const ProfileScreen: React.FC<Props> = ({route, navigation}) => {
           <View style={{justifyContent: 'flex-start', flexDirection: 'column'}}>
             <Text>{userModel?.name ?? ''}</Text>
             <View style={{flexDirection: 'row'}}>
-              <Text>{followers.size} follower </Text>
-              <Text>{following.size} following </Text>
+              <Text>{followers?.size??""} follower </Text>
+              <Text>{following?.size??""} following </Text>
             </View>
           </View>
         </View>

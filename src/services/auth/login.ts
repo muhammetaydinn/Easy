@@ -1,11 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { baseUrl } from '../../constants/constants';
-import { storeDataJSON } from '../storage/asyncStorage';
+import {baseUrl} from '../../constants/constants';
+import {getAllKeys, storeDataJSON} from '../storage/asyncStorage';
 
 export const login = async (email: string, password: string) => {
   var deviceId: string | null = await AsyncStorage.getItem('deviceId');
+  getAllKeys();
   console.log('userdeviceId', deviceId);
+  console.log('keys',getAllKeys());
   console.log('email', email);
   console.log('password', password);
   if (
@@ -19,9 +21,10 @@ export const login = async (email: string, password: string) => {
       : 'Please fill all the fields';
   } else {
     try {
-      const response = await axios.post(`${baseUrl}/device/login/` + deviceId, {
+      const response = await axios.post(`${baseUrl}/devices/login`, {
         email: email,
         password: password,
+        deviceId: deviceId,
       });
       storeDataJSON('user', response.data);
       return 'success';

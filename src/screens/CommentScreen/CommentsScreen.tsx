@@ -1,28 +1,37 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import React, {useEffect} from 'react';
 import {FlatList, View} from 'react-native';
+import {Button, TextInput} from 'react-native-paper';
 import {Text} from '../../components/atoms/Text';
 import {CustomAppBar} from '../../components/molecules/customAppBar';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigators/Main';
-import {Comment} from '../../models/news';
-import {Button, TextInput} from 'react-native-paper';
-import React from 'react';
-import {commentToNew} from '../../services/news/comment_to_news';
-import {useAppDispatch, useAppSelector} from '../../store/store';
 import {addCommentToNews} from '../../store/features/NewsSlice';
+import {useAppDispatch} from '../../store/store';
 import CommentCard from './comcard';
+import {Comment} from '../../models/comments';
+import {getDataJSON} from '../../services/storage/asyncStorage';
 type Props = NativeStackScreenProps<RootStackParams, 'CommentsScreen'>;
 
 const CommentsScreen: React.FC<Props> = ({route, navigation}) => {
   const dispatch = useAppDispatch();
   //TODO: get comments from redux cok fazla render yapıyo yoksa
   const [comment, setComment] = React.useState('');
+  const [commentList, setCommentList] = React.useState<Comment[]>([]);
+  const [user, setUser] = React.useState({
+    userId: '',
+  });
+
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await getDataJSON('user');
+      setUser(user);
+    };
+    getUser();
+  }, [commentList]);
 
   // get commments from redux
-  const aNew = useAppSelector(state => state.NewsSlice.news);
-  const commentCount =
-    aNew.find(item => item.newsId === route.params.newsId)?.comments.length ??
-    '0';
-  console.log('aNew', aNew.length);
+  const commentCount = null;
+  console.log('route.params.newsId', route.params.newsId);
 
   return (
     <View
@@ -36,11 +45,16 @@ const CommentsScreen: React.FC<Props> = ({route, navigation}) => {
         style={{
           height: 50,
         }}>
-        {CustomAppBar('Responses(' + commentCount + ')', [], [], navigation)}
+        {CustomAppBar(
+          'Responses(' + (commentCount ?? '...') + ')',
+          [],
+          [],
+          navigation,
+        )}
         <View style={{height: 1, backgroundColor: 'gray'}}></View>
       </View>
       <FlatList
-        data={aNew?.find(item => item.newsId === route.params.newsId)?.comments}
+        data={[]}
         renderItem={({item}) => <CommentCard comment={item} />}
         ItemSeparatorComponent={() => (
           <View
@@ -80,13 +94,23 @@ const CommentsScreen: React.FC<Props> = ({route, navigation}) => {
           onPress={async () => {
             console.log('comment', comment);
             console.log('route.params.newsId', route.params.newsId);
-            await commentToNew(comment, route.params.newsId);
+            // await commentToNew(comment, route.params.newsId);
+            setCommentList([
+              ...commentList,
+              {
+                userId: user.userId,
+
+                text: comment,
+              } as Comment,
+            ]);
             dispatch(
-              addCommentToNews({comment: comment, newsId: route.params.newsId}),
+              addCommentToNews({
+                newsId: route.params.newsId,
+                comment: comment,
+              }),
             ).then(() => {
               setComment('');
-            }
-            );
+            });
           }}>
           <Text>Post</Text>
         </Button>

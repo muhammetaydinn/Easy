@@ -1,10 +1,8 @@
-// newsSlice.js
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { PaginationModel } from '../../models/pagination';
+import {PayloadAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {PaginationModel} from '../../models/pagination';
 import axiosInstance from '../../services/axios/axios_instance';
 export interface Pagination {
-  // pagination: PaginationModel;
-  content:Array<any>,
+  content: Array<any>;
 
   pageNumber: number;
   pageSize: number;
@@ -13,8 +11,7 @@ export interface Pagination {
   isListEnd: boolean;
 }
 const initialState: Pagination = {
-  content:[],
-  // pagination: initialPagination,
+  content: [],
   loading: false,
   error: '',
   isListEnd: false,
@@ -58,9 +55,7 @@ export const PaginationSlice = createSlice({
   reducers: {
     setPageNumber(state, action: PayloadAction<number>) {
       console.log('setPageNumber', state.pageNumber);
-      state.isListEnd
-        ? {}
-        : (state.pageNumber = action.payload);
+      state.isListEnd ? {} : (state.pageNumber = action.payload);
     },
   },
   extraReducers: builder => {
@@ -74,14 +69,16 @@ export const PaginationSlice = createSlice({
         //content
         if (action.payload.content.length > 0) {
           state.content.push(...action.payload.content);
+        } else {
+          state.isListEnd = true;
         }
         if (action.payload.last == true) {
           state.isListEnd = true;
         }
-        //pageable
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.loading = false;
+        state.isListEnd = true;
         state.error = action.error.message || 'Error fetching data';
       });
   },

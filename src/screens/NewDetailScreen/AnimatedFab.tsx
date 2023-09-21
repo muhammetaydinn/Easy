@@ -1,22 +1,45 @@
 import {Animated, Dimensions, StatusBar, StyleSheet} from 'react-native';
 import {height} from '../../utils/hw';
 import {FAB} from 'react-native-paper';
-import {Comment} from '../../models/news';
 import {RootStackParams} from '../../navigators/Main';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-
-export const AnimatedFab: React.FC<{
-  comments: Comment[];
+import {likeNews} from '../../services/interactions/like_news';
+import React from 'react';
+import {bookmarkNews} from '../../services/interactions/bookmark_news';
+interface Props {
   translateYe: any;
   newsId: string;
-}> = ({comments, translateYe, newsId}) => {
+  likes: number;
+  bookmarks: number;
+}
+export const AnimatedFab: React.FC<Props> = ({
+  translateYe,
+  newsId,
+  likes,
+  bookmarks,
+}) => {
+  const [likeCount, setLikeCount] = React.useState(likes);
+  const [bookmarksCount, setBookmarksCount] = React.useState(bookmarks);
   const screenHeight = Dimensions.get('screen').height;
   const windowHeight = Dimensions.get('window').height;
   const statusbar = StatusBar!.currentHeight;
   const navbarHeight = screenHeight - windowHeight + statusbar! ?? 0;
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  // const like = async () => {
+  //   const response = await likeNews(newsId, true);
+  //   if (response.newsId.length > 0) {
+  //     setLikeCount(response.likes);
+  //   }
+  // };
+  // const bookmark = async () => {
+  //   const response = await bookmarkNews(newsId, true);
+  //   if (response.newsId.length > 0) {
+  //     setBookmarksCount(response.bookmarks);
+  //   }
+  // };
+
   return (
     <Animated.View
       style={{
@@ -36,11 +59,13 @@ export const AnimatedFab: React.FC<{
         elevation: 4,
       }}>
       <FAB
-        label="312"
+        label={likeCount.toString()}
         icon="hand-clap"
         color="white"
         style={styles.fab}
-        onPress={() => console.log('Pressed')}
+        onPress={() => {
+          // like();
+        }}
       />
       <FAB
         icon="comment-multiple-outline"
@@ -48,16 +73,18 @@ export const AnimatedFab: React.FC<{
         style={styles.fab}
         onPress={() => {
           navigation.navigate('CommentsScreen', {
-            comment: comments,
             newsId: newsId,
           });
         }}
       />
       <FAB
+        label={bookmarksCount.toString()}
         icon="bookmark-plus-outline"
         color="white"
         style={styles.fab}
-        onPress={() => console.log('Pressed')}
+        onPress={() => {
+          // bookmark();
+        }}
       />
     </Animated.View>
   );

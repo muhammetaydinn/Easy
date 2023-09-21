@@ -1,13 +1,8 @@
-import axios from 'axios';
-import {baseUrl} from '../../constants/constants';
-import {getHeader} from '../../utils/header';
+import axiosInstance from '../axios/axios_instance';
 
 export const getAllCategories = async () => {
-  var header = await getHeader();
   try {
-    const response = await axios.get(`${baseUrl}/categories`, {
-      headers: header,
-    });
+    const response = await axiosInstance.get(`/categories`);
     console.log(response.data);
     if (response.status >= 200 && response.status < 300) {
       return response.data;

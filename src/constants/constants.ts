@@ -2,9 +2,9 @@ import axios from 'axios';
 //KUTUPHANE
 // export const baseUrl: string = 'http://10.0.2.2:8090/api';
 //OFIS
-// export const baseUrl: string = 'http://192.168.1.144:8080/api';
+export const baseUrl: string = 'http://192.168.1.144:8080/api';
 //EV
-export const baseUrl: string = 'http://192.168.1.123:8090/api';
+// export const baseUrl: string = 'http://192.168.1.123:8090/api';
 
 
 

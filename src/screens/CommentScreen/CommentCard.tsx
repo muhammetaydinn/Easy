@@ -1,13 +1,13 @@
 import {StyleSheet, View} from 'react-native';
 import {Text} from '../../components/atoms/Text';
-import {Comment} from '../../models/news';
+import { Comment } from '../../models/comments';
 
 const CommentCard = ({comment}: {comment: Comment}) => {
   return (
     <View style={styles.container}>
       <View style={styles.commentContainer}>
         <View style={styles.commentHeader}>
-          <Text>{comment.author.name}</Text>
+          <Text>{comment.name}</Text>
           <Text>{comment.creationTime}</Text>
         </View>
         <Text style={styles.commentText}>{comment.text}</Text>

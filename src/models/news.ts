@@ -7,33 +7,29 @@ export interface Root {
   first: boolean;
   size: number;
   number: number;
-  sort: Sort;
+  sort: Sort2;
   numberOfElements: number;
   empty: boolean;
 }
 
 export interface Content {
+  responseTime: string;
   newsId: string;
   title: string;
   text: string;
-  image?: string;
-  author: Author;
+  image: string|null;
   creationTime: string;
-  category: Category;
-  comments: Comment[];
+  author: Author;
+  category: string;
+  likes: number;
+  bookmarks: number;
+  views: number;
 }
 
 export interface Author {
   userId: string;
   name: string;
-  image?: string;
-  userToken: string;
-  role: number;
-}
-
-export interface Category {
-  categoryId: number;
-  name: string;
+  image: string|null;
 }
 
 export interface Pageable {
@@ -47,12 +43,12 @@ export interface Pageable {
 
 export interface Sort {
   empty: boolean;
-  sorted: boolean;
   unsorted: boolean;
+  sorted: boolean;
 }
-export interface Comment {
-  commentUUID: string;
-  text: string;
-  author: Author;
-  creationTime: string;
+
+export interface Sort2 {
+  empty: boolean;
+  unsorted: boolean;
+  sorted: boolean;
 }

@@ -6,11 +6,18 @@ import {fetchData, setPageNumber} from '../../store/features/PaginationSlice';
 import {useAppDispatch, useAppSelector} from '../../store/store';
 import {Text} from '../atoms/Text';
 import NewsComponent from './newcom';
+import { getState } from '../../utils/getState';
 
-const PaginationScreen = ({apiUrl}: {apiUrl: string}) => {
+const PaginationScreen = ({
+  apiUrl,
+  stateName,
+}: {
+  apiUrl: string;
+  stateName: string;
+}) => {
   const dispatch = useAppDispatch();
-  const {loading, isListEnd, pageNumber, content} = useAppSelector(
-    state => state.PaginationSlice,
+  const {loading, isListEnd, pageNumber, content} = useAppSelector(state =>
+    getState(state, stateName),
   );
 
   useEffect(() => {

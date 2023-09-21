@@ -1,5 +1,16 @@
 - Navigation bar arkaplan rengini beyaz yap
 - Eğer custom text ile sorun yaşanısa oraya eklenen react native pakedidin sadece spesifik olanını değil genel rn ekle
+- Internet bağlantını kontrol et ona göre kullanıcı bilgilendir
+- backend ile olan bağlantıyı kontrol et sorun varsa yine bilgilendir.
+- login ekranlarını güncelle 
+- çıkış yapmayı hallet
+- şifreyi unuttum ekranını hallet logici de
+- bildirime ses ekle
+- iç içe kategori tasarımını ekle
+- Profil Ekranı ve takip et butonu ekle
+- kategoriyi gösterebilirim
+- roller var 777 1 2 3
+  
 
 ## Eklenen Paketler ve özel kurulumları
 

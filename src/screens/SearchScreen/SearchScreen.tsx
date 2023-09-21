@@ -90,7 +90,7 @@ const SearchScreen: React.FC<Props> = ({route, navigation}) => {
           <TabNavigator />
         </View>
       ) : (
-        <PaginationScreen apiUrl="/news" />
+        <PaginationScreen apiUrl="/news" stateName="SearchTrending" />
       )}
     </SafeAreaView>
   );

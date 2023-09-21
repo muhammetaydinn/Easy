@@ -11,6 +11,7 @@ import { RootStackParams } from '../navigators/Main';
 import { fetchNews, setPageNumber } from '../store/features/NewsSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { height, width } from '../utils/hw';
+import { Image } from 'react-native-paper/lib/typescript/components/Avatar/Avatar';
 type Props = NativeStackScreenProps<RootStackParams, 'HomeScreen'>;
 const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   const dispatch = useAppDispatch();
@@ -24,9 +25,9 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
         pageSize: pageSize,
       }),
     );
-  }, [dispatch, pageNumber, pageSize]);
+  }, [ pageNumber, ]);
   const loadMoreNews = () => {
-    !isListEnd ? dispatch(setPageNumber(pageNumber + 1)) : {};
+    !isListEnd&&news.length>0  ? dispatch(setPageNumber(pageNumber + 1)) : {};
   };
   const renderFooter = () => {
     return (
@@ -37,6 +38,10 @@ const HomeScreen: React.FC<Props> = ({route, navigation}) => {
   };
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
+      <Image
+        source={{
+          uri: 'https://firebasestorage.googleapis.com/v0/b/easy-newss.appspot.com/o/38c24ea7-1d4c-493c-a3b6-a8c4ebf558a0.null?alt=media&',
+        }}></Image>
       {/* TODO: ScrollTableTexts component must be sticky*/}
       <FlatList
         ListHeaderComponent={() => (
